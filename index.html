@@ -21,6 +21,12 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
     </style>
+    <!-- html2canvas CDN for capturing the card as an image -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <!-- JSZip for creating zip files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+    <!-- FileSaver.js for saving files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 </head>
 <body>
     <div id="root"></div>
@@ -30,7 +36,7 @@
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
 
     <script type="text/javascript">
-        const { useState, useEffect } = React; // Removed useRef as it's not needed in this version
+        const { useState, useEffect, useRef } = React; // useRef is back for download functionality
 
         // Helper function to get contact/social media icon
         const getContactOrSocialIcon = (type, onErrorHandler) => {
@@ -123,7 +129,7 @@
         };
 
         // Card Preview Component
-        const CardPreview = ({ cardData }) => { // cardRef prop removed
+        const CardPreview = ({ cardData, cardRef }) => { // cardRef prop is back
             // Define onErrorHandler here so it's in scope for images within CardPreview
             const onErrorHandler = (e) => {
                 console.error("Error loading image/icon:", e.target.src || e.target.style.backgroundImage);
@@ -141,7 +147,7 @@
                 'div',
                 {
                     className: `w-full h-auto min-h-[400px] rounded-2xl shadow-xl overflow-hidden flex flex-col ${cardData.background} text-white`,
-                    // ref: cardRef removed
+                    ref: cardRef // Assign the ref to this div
                 },
                 cardData.coverImage && React.createElement(
                     'div',
@@ -389,7 +395,7 @@
                          return { ...prevData, [key]: value };
                     }
                     return prevData;
-                });
+                }); // <-- The missing parenthesis and semicolon was fixed here
             };
 
             const updateArrayItem = (section, id, key, value) => {
@@ -444,6 +450,769 @@
                 { value: 'website', label: 'Website' },
                 { value: '', label: 'Other (Manual Input)' },
             ];
+
+            // Create a ref for the card preview div
+            const cardRef = useRef(null);
+
+            // Function to download the card as an image
+            const downloadCard = () => {
+                if (cardRef.current) {
+                    html2canvas(cardRef.current, {
+                        useCORS: true, // Attempt to load cross-origin images if allowed by their servers
+                        scale: 2 // Increase scale for higher resolution image
+                    }).then(canvas => {
+                        const link = document.createElement('a');
+                        link.href = canvas.toDataURL('image/png');
+                        link.download = 'digital_card.png';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+                    }).catch(error => {
+                        console.error('Error capturing card for download:', error);
+                        const messageBox = document.createElement('div');
+                        messageBox.textContent = 'Failed to download card image. Ensure all images are loaded and try again.';
+                        messageBox.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #f8d7da; color: #721c24; padding: 10px 20px; border-radius: 5px; z-index: 1000;';
+                        document.body.appendChild(messageBox);
+                        setTimeout(() => {
+                            document.body.removeChild(messageBox);
+                        }, 5000);
+                    });
+                } else {
+                    console.warn('Card element not found for image download.');
+                }
+            };
+
+            // Function to generate and download the complete HTML project as a ZIP
+            const generateZipPackage = async () => {
+                try {
+                    const zip = new JSZip();
+
+                    // Get the current cardData state to embed it in the generated HTML
+                    const currentCardData = JSON.stringify(cardData, null, 2); // Pretty print for readability
+
+                    // Define the script content that will be embedded in the exported HTML
+                    // This includes the getContactOrSocialIcon and CardDisplay functions
+                    // as well as the main ReactDOM.createRoot call with the initialCardData
+                    const exportedScriptContent = `
+const { useState, useEffect, useRef } = React;
+
+const initialCardData = ${currentCardData};
+
+const getContactOrSocialIcon = (type, onErrorHandler) => {
+    const iconSizeClass = "w-7 h-7 object-contain";
+    const iconFillColor = "white";
+
+    const inlineSvgMap = {
+        'email': \`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="\${iconFillColor}"><path d="M22 6C22 5.44772 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V18C2 18.5523 2.44772 19 3 19H21C21.5523 19 22 18.5523 22 18V6ZM20 7L12 13L4 7V17H20V7Z"></path></svg>\`,
+        'phone': \`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="\${iconFillColor}"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C12.95 21 3 11.05 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.62 10.79z"></path></svg>\`,
+        'address': \`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="\${iconFillColor}"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"></path></svg>\`,
+    };
+
+    const externalLogoMap = {
+        'facebook': "https://upload.wikimedia.org/wikipedia/commons/b/b5/Facebook_Logo_%282023%29.png",
+        'instagram': "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg",
+        'twitter': "https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg",
+        'linkedin': "https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg",
+        'youtube': "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg",
+        'tiktok': "https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg",
+        'pinterest': "https://upload.wikimedia.org/wikipedia/commons/c/ce/Pinterest_Logo.png",
+        'snapchat': "https://upload.wikimedia.org/wikipedia/commons/a/ad/Snapchat_logo.svg",
+        'whatsapp': "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+        'github': "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+        'website': "https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Chrome_icon_%282011%29.svg",
+        'pgp_key': "https://www.svgrepo.com/show/532354/key-fill.svg",
+        'business_name': "https://www.svgrepo.com/show/496739/building.svg",
+        'pronouns': "https://www.svgrepo.com/show/487373/gender-fluid-alt.svg"
+    };
+
+    const typeLower = type.toLowerCase();
+
+    if (inlineSvgMap[typeLower]) {
+        return React.createElement('span', { className: iconSizeClass, dangerouslySetInnerHTML: { __html: inlineSvgMap[typeLower] } });
+    } else if (externalLogoMap[typeLower]) {
+        const logoUrl = externalLogoMap[typeLower];
+        return React.createElement('img', { src: logoUrl, alt: type, className: iconSizeClass, onError: onErrorHandler });
+    } else {
+        return '';
+    }
+};
+
+const CardDisplay = ({ cardData }) => {
+    const onErrorHandler = (e) => {
+        console.error("Error loading image/icon:", e.target.src || e.target.style.backgroundImage);
+        e.target.onerror = null;
+        if (e.target.tagName === 'IMG') {
+            e.target.src = 'https://placehold.co/28x28/CCCCCC/000000?text=?';
+        } else if (e.target.tagName === 'DIV') {
+            e.target.style.backgroundImage = \`url('https://placehold.co/600x200/6B7280/FFFFFF?text=Error')\`;
+        }
+        e.target.alt = 'Fallback Image';
+    };
+
+    return React.createElement(
+        'div',
+        { className: \`w-full h-auto min-h-[400px] rounded-2xl shadow-xl overflow-hidden flex flex-col \${cardData.background} text-white\` },
+        cardData.coverImage && React.createElement(
+            'div',
+            {
+                className: 'w-full h-40 bg-center bg-cover',
+                style: { backgroundImage: \`url(\${cardData.coverImage})\` },
+                onError: onErrorHandler
+            }
+        ),
+        React.createElement(
+            'div',
+            { className: 'flex flex-col items-center p-6 -mt-16 z-10' },
+            React.createElement('img', {
+                src: cardData.profileImage,
+                alt: 'Profile',
+                className: 'w-32 h-32 rounded-full object-cover border-4 border-white shadow-md mb-4',
+                onError: onErrorHandler
+            }),
+            React.createElement('h1', { className: 'text-3xl font-bold text-center mb-1 drop-shadow-md' }, cardData.name),
+            React.createElement('h2', { className: 'text-xl text-center mb-4 opacity-90 drop-shadow-sm' }, cardData.title),
+            cardData.about && React.createElement(
+                'p',
+                { className: 'text-center text-sm max-w-xs opacity-90 leading-relaxed drop-shadow-sm' },
+                cardData.about
+            )
+        ),
+        React.createElement(
+            'div',
+            { className: 'text-center text-sm space-y-2 opacity-90 drop-shadow-sm p-6 pt-0' },
+            React.createElement(
+                'div',
+                { className: 'flex flex-wrap justify-center gap-4' },
+                cardData.contactDetails.map((detail) => {
+                    const icon = getContactOrSocialIcon(detail.type, onErrorHandler);
+                    const isClickable = ['email', 'phone', 'facebook', 'instagram', 'twitter', 'linkedin', 'youtube', 'tiktok', 'github', 'pinterest', 'snapchat', 'whatsapp', 'website', 'address'].includes(detail.type);
+
+                    if (detail.value) {
+                        let href = '#';
+                        if (detail.type === 'email') href = \`mailto:\${detail.value}\`;
+                        else if (detail.type === 'phone') href = \`tel:\${detail.value}\`;
+                        else if (detail.type === 'address') href = \`https://www.google.com/maps/search/?api=1&query=\${encodeURIComponent(detail.value)}\`;
+                        else if (isClickable) href = detail.value.startsWith('http') ? detail.value : \`https://\${detail.value}\`;
+
+                        if (isClickable) {
+                            return React.createElement(
+                                'a',
+                                {
+                                    key: detail.id,
+                                    href: href,
+                                    target: '_blank',
+                                    rel: 'noopener noreferrer',
+                                    className: 'text-white hover:opacity-75 transition-opacity inline-block p-2 rounded-full bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm shadow-md flex items-center justify-center',
+                                    'aria-label': \`\${detail.type} link\`
+                                },
+                                React.createElement('span', { className: 'text-2xl leading-none' }, icon)
+                            );
+                        } else {
+                            return React.createElement(
+                                'p',
+                                { key: detail.id, className: 'flex items-center justify-center' },
+                                React.createElement('span', { className: 'text-xl mr-2' }, icon),
+                                ' ',
+                                detail.value
+                            );
+                        }
+                    }
+                    return null;
+                })
+            )
+        ),
+        React.createElement(
+            'div',
+            { className: 'mb-6 space-y-3 p-6 pt-0' },
+            cardData.links.map((link) => {
+                const linkChildren = [];
+                if (link.type === 'url' && link.customLogoUrl) {
+                    linkChildren.push(React.createElement('img', {
+                        src: link.customLogoUrl,
+                        alt: 'Custom Logo',
+                        className: 'w-6 h-6 mr-2 object-contain',
+                        onError: onErrorHandler
+                    }));
+                }
+                if (link.type === 'url') {
+                    linkChildren.push(React.createElement('span', null, link.title));
+                }
+
+                return (
+                    link.url || link.textAboveButton || link.textBelowButton ? (
+                        React.createElement(
+                            'div',
+                            { key: link.id, className: 'flex flex-col items-center w-full' },
+                            link.type === 'google-review' && link.textAboveButton && (
+                                React.createElement(
+                                    'p',
+                                    { className: 'text-white text-sm text-center mb-2 px-4 py-1 rounded-md bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm w-full max-w-xs' },
+                                    link.textAboveButton
+                                )
+                            ),
+                            link.type === 'google-review' ? (
+                                React.createElement(
+                                    'a',
+                                    {
+                                        href: link.url ? link.url : '#',
+                                        target: '_blank',
+                                        rel: 'noopener noreferrer',
+                                        className: 'block px-4 py-2 bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg text-center font-semibold hover:bg-opacity-30 transition-all duration-200 shadow-md text-white flex items-center justify-center',
+                                        'aria-label': 'Google Review'
+                                    },
+                                    React.createElement('img', {
+                                        src: 'https://placehold.co/150x40/FFFFFF/000000?text=Google+Reviews',
+                                        alt: 'Google Reviews',
+                                        className: 'h-10 object-contain',
+                                        onError: onErrorHandler
+                                    })
+                                )
+                            ) : (
+                                React.createElement(
+                                    'a',
+                                    {
+                                        href: link.url ? link.url : '#',
+                                        target: '_blank',
+                                        rel: 'noopener noreferrer',
+                                        className: 'block w-full px-6 py-3 bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg text-center text-lg font-semibold hover:bg-opacity-30 transition-all duration-200 shadow-md text-white flex items-center justify-center space-x-2'
+                                    },
+                                    ...linkChildren
+                                )
+                            ),
+                            link.type === 'google-review' && link.textBelowButton && (
+                                React.createElement(
+                                    'p',
+                                    { className: 'text-white text-sm text-center mt-2 px-4 py-1 rounded-md bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm w-full max-w-xs' },
+                                    link.textBelowButton
+                                )
+                            )
+                        )
+                    ) : null
+                );
+            })
+        ),
+        cardData.mediaItems.length > 0 && React.createElement(
+            'div',
+            { className: 'p-6 pt-0 space-y-4' },
+            cardData.mediaItems.map((media) => (
+                media.url ? (
+                    React.createElement(
+                        'div',
+                        { key: media.id, className: 'w-full bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg overflow-hidden shadow-md' },
+                        media.type === 'video' && (
+                            React.createElement('iframe', {
+                                width: '100%',
+                                height: '200',
+                                src: media.url,
+                                frameBorder: '0',
+                                allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+                                allowFullScreen: true,
+                                title: 'Embedded Video',
+                                className: 'rounded-lg'
+                            })
+                        ),
+                        media.type === 'pdf' && (
+                            React.createElement('iframe', {
+                                width: '100%',
+                                height: '300',
+                                src: media.url,
+                                frameBorder: '0',
+                                title: 'Embedded PDF',
+                                className: 'rounded-lg'
+                            })
+                        ),
+                        media.type === '360_photo' && (
+                            React.createElement('iframe', {
+                                width: '100%',
+                                height: '250',
+                                src: media.url,
+                                frameBorder: '0',
+                                allowFullScreen: true,
+                                title: 'Embedded 360 Photo',
+                                className: 'rounded-lg'
+                            })
+                        )
+                    )
+                ) : (
+                    React.createElement(
+                        'div',
+                        { key: media.id, className: 'text-center text-sm text-white opacity-70' },
+                        'Please provide a valid URL for the ',
+                        media.type.replace('_', ' '),
+                        '.'
+                    )
+                )
+            ))
+        )
+    );
+};
+
+// Main App Component
+function App() {
+    const [cardData, setCardData] = useState(() => {
+        let savedData = null;
+        try {
+            const storedData = localStorage.getItem('cardGeneratorData');
+            if (storedData) {
+                savedData = JSON.parse(storedData);
+            }
+        } catch (error) {
+            console.error("Error parsing localStorage data, reverting to default:", error);
+            localStorage.removeItem('cardGeneratorData');
+        }
+
+        return savedData || {
+            coverImage: 'https://placehold.co/600x200/6B7280/FFFFFF?text=Cover+Image',
+            profileImage: 'https://placehold.co/128x128/9CA3AF/FFFFFF?text=Profile',
+            name: 'Your Name',
+            title: 'Your Title / Profession',
+            about: 'A brief description about yourself or your work. Keep it concise and engaging!',
+            contactDetails: [
+                { id: 'cd-1', type: 'email', value: 'your.email@example.com' },
+                { id: 'cd-2', type: 'phone', value: '+1 (555) 123-4567' },
+                { id: 'cd-3', type: 'twitter', value: 'https://twitter.com/yourhandle' },
+                { id: 'cd-4', type: 'address', value: '1600 Amphitheatre Parkway, Mountain View, CA' },
+            ],
+            links: [
+                { id: 'link-1', title: 'My Website', url: 'https://www.example.com', type: 'url', customLogoUrl: '', textAboveButton: '', textBelowButton: '' },
+                { id: 'link-2', title: 'LinkedIn Profile', url: 'https://www.linkedin.com/in/yourprofile', type: 'url', customLogoUrl: '', textAboveButton: '', textBelowButton: '' },
+                { id: 'link-3', type: 'google-review', url: 'https://g.page/your-business/review', customLogoUrl: '', textAboveButton: 'Tell us about your experience!', textBelowButton: 'Your feedback helps us improve.' }
+            ],
+            mediaItems: [
+                { id: 'media-1', type: 'video', url: 'https://www.youtube.com/embed/M7lc1UVf-VE' }
+            ],
+            background: 'bg-gradient-to-br from-purple-500 to-pink-500',
+        };
+    });
+
+    useEffect(() => {
+        localStorage.setItem('cardGeneratorData', JSON.stringify(cardData));
+    }, [cardData]);
+
+    const updateCardData = (section, key, value) => {
+        setCardData(prevData => {
+            if (section === 'general') {
+                 return { ...prevData, [key]: value };
+            }
+            return prevData;
+        });
+    };
+
+    const updateArrayItem = (section, id, key, value) => {
+        setCardData(prevData => ({
+            ...prevData,
+            [section]: prevData[section].map(item =>
+                item.id === id ? { ...item, [key]: value } : item
+            )
+        }));
+    };
+
+    const addArrayItem = (section, newItem) => {
+        setCardData(prevData => ({
+            ...prevData,
+            [section]: [...prevData[section], { id: `item-${Date.now()}`, ...newItem }]
+        }));
+    };
+
+    const removeArrayItem = (section, id) => {
+        setCardData(prevData => ({
+            ...prevData,
+            [section]: prevData[section].filter(item => item.id !== id)
+        }));
+    };
+
+    const backgrounds = [
+        { name: 'Purple to Pink', class: 'bg-gradient-to-br from-purple-500 to-pink-500' },
+        { name: 'Blue to Green', class: 'bg-gradient-to-br from-blue-500 to-green-500' },
+        { name: 'Sunny Yellow', class: 'bg-gradient-to-br from-yellow-300 to-orange-400' },
+        { name: 'Dark Grey', class: 'bg-gray-800' },
+        { name: 'Clean White', class: 'bg-white' },
+        { name: 'Ocean Teal', class: 'bg-gradient-to-br from-teal-400 to-cyan-600' },
+    ];
+
+    const contactDetailsOptions = [
+        { value: 'email', label: 'Email' },
+        { value: 'phone', label: 'Phone' },
+        { value: 'address', label: 'Location / Address' },
+        { value: 'pgp_key', label: 'OpenPGP Public Key' },
+        { value: 'business_name', label: 'Business Name' },
+        { value: 'pronouns', label: 'Gender Pronouns' },
+        { value: 'facebook', label: 'Facebook' },
+        { value: 'instagram', label: 'Instagram' },
+        { value: 'twitter', label: 'Twitter (X)' },
+        { value: 'linkedin', label: 'LinkedIn' },
+        { value: 'youtube', label: 'YouTube' },
+        { value: 'tiktok', label: 'TikTok' },
+        { value: 'github', label: 'GitHub' },
+        { value: 'pinterest', label: 'Pinterest' },
+        { value: 'snapchat', label: 'Snapchat' },
+        { value: 'whatsapp', label: 'WhatsApp' },
+        { value: 'website', label: 'Website' },
+        { value: '', label: 'Other (Manual Input)' },
+    ];
+
+    // Create a ref for the card preview div
+    const cardRef = useRef(null);
+
+    // Function to download the card as an image
+    const downloadCard = () => {
+        if (cardRef.current) {
+            html2canvas(cardRef.current, {
+                useCORS: true, // Attempt to load cross-origin images if allowed by their servers
+                scale: 2 // Increase scale for higher resolution image
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'digital_card.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            }).catch(error => {
+                console.error('Error capturing card for download:', error);
+                const messageBox = document.createElement('div');
+                messageBox.textContent = 'Failed to download card image. Ensure all images are loaded and try again.';
+                messageBox.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #f8d7da; color: #721c24; padding: 10px 20px; border-radius: 5px; z-index: 1000;';
+                document.body.appendChild(messageBox);
+                setTimeout(() => {
+                    document.body.removeChild(messageBox);
+                }, 5000);
+            });
+        } else {
+            console.warn('Card element not found for image download.');
+        }
+    };
+
+    // Function to generate and download the complete HTML project as a ZIP
+    const generateZipPackage = async () => {
+        try {
+            const zip = new JSZip();
+
+            // Get the current cardData state to embed it in the generated HTML
+            const currentCardData = JSON.stringify(cardData, null, 2); // Pretty print for readability
+
+            // Define the script content that will be embedded in the exported HTML
+            // This includes the getContactOrSocialIcon and CardDisplay functions
+            // as well as the main ReactDOM.createRoot call with the initialCardData
+            const exportedScriptContent = `
+const { useState, useEffect, useRef } = React;
+
+const initialCardData = ${currentCardData};
+
+const getContactOrSocialIcon = (type, onErrorHandler) => {
+    const iconSizeClass = "w-7 h-7 object-contain";
+    const iconFillColor = "white";
+
+    const inlineSvgMap = {
+        'email': \`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="\${iconFillColor}"><path d="M22 6C22 5.44772 21.5523 5 21 5H3C2.44772 5 2 5.44772 2 6V18C2 18.5523 2.44772 19 3 19H21C21.5523 19 22 18.5523 22 18V6ZM20 7L12 13L4 7V17H20V7Z"></path></svg>\`,
+        'phone': \`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="\${iconFillColor}"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1v3.5c0 .55-.45 1-1 1C12.95 21 3 11.05 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.24.2 2.45.57 3.57.11.35.03.74-.25 1.02L6.62 10.79z"></path></svg>\`,
+        'address': \`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="\${iconFillColor}"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"></path></svg>\`,
+    };
+
+    const externalLogoMap = {
+        'facebook': "https://upload.wikimedia.org/wikipedia/commons/b/b5/Facebook_Logo_%282023%29.png",
+        'instagram': "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg",
+        'twitter': "https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg",
+        'linkedin': "https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg",
+        'youtube': "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg",
+        'tiktok': "https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg",
+        'pinterest': "https://upload.wikimedia.org/wikipedia/commons/c/ce/Pinterest_Logo.png",
+        'snapchat': "https://upload.wikimedia.org/wikipedia/commons/a/ad/Snapchat_logo.svg",
+        'whatsapp': "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",
+        'github': "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",
+        'website': "https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Chrome_icon_%282011%29.svg",
+        'pgp_key': "https://www.svgrepo.com/show/532354/key-fill.svg",
+        'business_name': "https://www.svgrepo.com/show/496739/building.svg",
+        'pronouns': "https://www.svgrepo.com/show/487373/gender-fluid-alt.svg"
+    };
+
+    const typeLower = type.toLowerCase();
+
+    if (inlineSvgMap[typeLower]) {
+        return React.createElement('span', { className: iconSizeClass, dangerouslySetInnerHTML: { __html: inlineSvgMap[typeLower] } });
+    } else if (externalLogoMap[typeLower]) {
+        const logoUrl = externalLogoMap[typeLower];
+        return React.createElement('img', { src: logoUrl, alt: type, className: iconSizeClass, onError: onErrorHandler });
+    } else {
+        return '';
+    }
+};
+
+const CardDisplay = ({ cardData }) => {
+    const onErrorHandler = (e) => {
+        console.error("Error loading image/icon:", e.target.src || e.target.style.backgroundImage);
+        e.target.onerror = null;
+        if (e.target.tagName === 'IMG') {
+            e.target.src = 'https://placehold.co/28x28/CCCCCC/000000?text=?';
+        } else if (e.target.tagName === 'DIV') {
+            e.target.style.backgroundImage = \`url('https://placehold.co/600x200/6B7280/FFFFFF?text=Error')\`;
+        }
+        e.target.alt = 'Fallback Image';
+    };
+
+    return React.createElement(
+        'div',
+        { className: \`w-full h-auto min-h-[400px] rounded-2xl shadow-xl overflow-hidden flex flex-col \${cardData.background} text-white\` },
+        cardData.coverImage && React.createElement(
+            'div',
+            {
+                className: 'w-full h-40 bg-center bg-cover',
+                style: { backgroundImage: \`url(\${cardData.coverImage})\` },
+                onError: onErrorHandler
+            }
+        ),
+        React.createElement(
+            'div',
+            { className: 'flex flex-col items-center p-6 -mt-16 z-10' },
+            React.createElement('img', {
+                src: cardData.profileImage,
+                alt: 'Profile',
+                className: 'w-32 h-32 rounded-full object-cover border-4 border-white shadow-md mb-4',
+                onError: onErrorHandler
+            }),
+            React.createElement('h1', { className: 'text-3xl font-bold text-center mb-1 drop-shadow-md' }, cardData.name),
+            React.createElement('h2', { className: 'text-xl text-center mb-4 opacity-90 drop-shadow-sm' }, cardData.title),
+            cardData.about && React.createElement(
+                'p',
+                { className: 'text-center text-sm max-w-xs opacity-90 leading-relaxed drop-shadow-sm' },
+                cardData.about
+            )
+        ),
+        React.createElement(
+            'div',
+            { className: 'text-center text-sm space-y-2 opacity-90 drop-shadow-sm p-6 pt-0' },
+            React.createElement(
+                'div',
+                { className: 'flex flex-wrap justify-center gap-4' },
+                cardData.contactDetails.map((detail) => {
+                    const icon = getContactOrSocialIcon(detail.type, onErrorHandler);
+                    const isClickable = ['email', 'phone', 'facebook', 'instagram', 'twitter', 'linkedin', 'youtube', 'tiktok', 'github', 'pinterest', 'snapchat', 'whatsapp', 'website', 'address'].includes(detail.type);
+
+                    if (detail.value) {
+                        let href = '#';
+                        if (detail.type === 'email') href = \`mailto:\${detail.value}\`;
+                        else if (detail.type === 'phone') href = \`tel:\${detail.value}\`;
+                        else if (detail.type === 'address') href = \`https://www.google.com/maps/search/?api=1&query=\${encodeURIComponent(detail.value)}\`;
+                        else if (isClickable) href = detail.value.startsWith('http') ? detail.value : \`https://\${detail.value}\`;
+
+                        if (isClickable) {
+                            return React.createElement(
+                                'a',
+                                {
+                                    key: detail.id,
+                                    href: href,
+                                    target: '_blank',
+                                    rel: 'noopener noreferrer',
+                                    className: 'text-white hover:opacity-75 transition-opacity inline-block p-2 rounded-full bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm shadow-md flex items-center justify-center',
+                                    'aria-label': \`\${detail.type} link\`
+                                },
+                                React.createElement('span', { className: 'text-2xl leading-none' }, icon)
+                            );
+                        } else {
+                            return React.createElement(
+                                'p',
+                                { key: detail.id, className: 'flex items-center justify-center' },
+                                React.createElement('span', { className: 'text-xl mr-2' }, icon),
+                                ' ',
+                                detail.value
+                            );
+                        }
+                    }
+                    return null;
+                })
+            )
+        ),
+        React.createElement(
+            'div',
+            { className: 'mb-6 space-y-3 p-6 pt-0' },
+            cardData.links.map((link) => {
+                const linkChildren = [];
+                if (link.type === 'url' && link.customLogoUrl) {
+                    linkChildren.push(React.createElement('img', {
+                        src: link.customLogoUrl,
+                        alt: 'Custom Logo',
+                        className: 'w-6 h-6 mr-2 object-contain',
+                        onError: onErrorHandler
+                    }));
+                }
+                if (link.type === 'url') {
+                    linkChildren.push(React.createElement('span', null, link.title));
+                }
+
+                return (
+                    link.url || link.textAboveButton || link.textBelowButton ? (
+                        React.createElement(
+                            'div',
+                            { key: link.id, className: 'flex flex-col items-center w-full' },
+                            link.type === 'google-review' && link.textAboveButton && (
+                                React.createElement(
+                                    'p',
+                                    { className: 'text-white text-sm text-center mb-2 px-4 py-1 rounded-md bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm w-full max-w-xs' },
+                                    link.textAboveButton
+                                )
+                            ),
+                            link.type === 'google-review' ? (
+                                React.createElement(
+                                    'a',
+                                    {
+                                        href: link.url ? link.url : '#',
+                                        target: '_blank',
+                                        rel: 'noopener noreferrer',
+                                        className: 'block px-4 py-2 bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg text-center font-semibold hover:bg-opacity-30 transition-all duration-200 shadow-md text-white flex items-center justify-center',
+                                        'aria-label': 'Google Review'
+                                    },
+                                    React.createElement('img', {
+                                        src: 'https://placehold.co/150x40/FFFFFF/000000?text=Google+Reviews',
+                                        alt: 'Google Reviews',
+                                        className: 'h-10 object-contain',
+                                        onError: onErrorHandler
+                                    })
+                                )
+                            ) : (
+                                React.createElement(
+                                    'a',
+                                    {
+                                        href: link.url ? link.url : '#',
+                                        target: '_blank',
+                                        rel: 'noopener noreferrer',
+                                        className: 'block w-full px-6 py-3 bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg text-center text-lg font-semibold hover:bg-opacity-30 transition-all duration-200 shadow-md text-white flex items-center justify-center space-x-2'
+                                    },
+                                    ...linkChildren
+                                )
+                            ),
+                            link.type === 'google-review' && link.textBelowButton && (
+                                React.createElement(
+                                    'p',
+                                    { className: 'text-white text-sm text-center mt-2 px-4 py-1 rounded-md bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm w-full max-w-xs' },
+                                    link.textBelowButton
+                                )
+                            )
+                        )
+                    ) : null
+                );
+            })
+        ),
+        cardData.mediaItems.length > 0 && React.createElement(
+            'div',
+            { className: 'p-6 pt-0 space-y-4' },
+            cardData.mediaItems.map((media) => (
+                media.url ? (
+                    React.createElement(
+                        'div',
+                        { key: media.id, className: 'w-full bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg overflow-hidden shadow-md' },
+                        media.type === 'video' && (
+                            React.createElement('iframe', {
+                                width: '100%',
+                                height: '200',
+                                src: media.url,
+                                frameBorder: '0',
+                                allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+                                allowFullScreen: true,
+                                title: 'Embedded Video',
+                                className: 'rounded-lg'
+                            })
+                        ),
+                        media.type === 'pdf' && (
+                            React.createElement('iframe', {
+                                width: '100%',
+                                height: '300',
+                                src: media.url,
+                                frameBorder: '0',
+                                title: 'Embedded PDF',
+                                className: 'rounded-lg'
+                            })
+                        ),
+                        media.type === '360_photo' && (
+                            React.createElement('iframe', {
+                                width: '100%',
+                                height: '250',
+                                src: media.url,
+                                frameBorder: '0',
+                                allowFullScreen: true,
+                                title: 'Embedded 360 Photo',
+                                className: 'rounded-lg'
+                            })
+                        )
+                    )
+                ) : (
+                    React.createElement(
+                        'div',
+                        { key: media.id, className: 'text-center text-sm text-white opacity-70' },
+                        'Please provide a valid URL for the ',
+                        media.type.replace('_', ' '),
+                        '.'
+                    )
+                )
+            ))
+        )
+    );
+};
+
+ReactDOM.createRoot(document.getElementById('root-exported')).render(React.createElement(CardDisplay, { cardData: initialCardData }));
+                    `;
+
+                    // Construct the full HTML content for the exported index.html
+                    const fullHtml = `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Digital Card</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body { margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; background-color: #f3f4f6; }
+        /* Add any additional global styles for the exported card here */
+    </style>
+    <!-- React and ReactDOM CDNs for the exported file -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root-exported" class="p-4"></div>
+    <script type="text/javascript">
+        ${exportedScriptContent}
+    </script>
+</body>
+</html>
+                    `;
+
+                    zip.file("index.html", fullHtml);
+
+                    const content = await zip.generateAsync({ type: "blob" });
+                    saveAs(content, "digital_card_project.zip");
+
+                    const messageBox = document.createElement('div');
+                    messageBox.textContent = 'Project ZIP downloaded successfully!';
+                    messageBox.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #d4edda; color: #155724; padding: 10px 20px; border-radius: 5px; z-index: 1000;';
+                    document.body.appendChild(messageBox);
+                    setTimeout(() => {
+                        document.body.removeChild(messageBox);
+                    }, 5000);
+
+                } catch (error) {
+                    console.error('Error generating ZIP package:', error);
+                    const messageBox = document.createElement('div');
+                    messageBox.textContent = 'Failed to generate ZIP package.';
+                    messageBox.style.cssText = 'position: fixed; top: 20px; left: 50%; transform: translateX(-50%); background: #f8d7da; color: #721c24; padding: 10px 20px; border-radius: 5px; z-index: 1000;';
+                    document.body.appendChild(messageBox);
+                    setTimeout(() => {
+                        document.body.removeChild(messageBox);
+                    }, 5000);
+                }
+            };
 
             return React.createElement(
                 'div',
