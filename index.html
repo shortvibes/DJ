@@ -37,7 +37,12 @@
         const getContactOrSocialIcon = (type) => {
             const iconSizeClass = "w-7 h-7 object-contain";
             // Updated onError to be a direct function, safer than eval
-            const onErrorHandler = (e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/28x28/CCCCCC/000000?text=?'; e.target.alt = 'Fallback Logo'; };
+            const onErrorHandler = (e) => {
+                console.error("Error loading icon:", e.target.src);
+                e.target.onerror = null;
+                e.target.src = 'https://placehold.co/28x28/CCCCCC/000000?text=?';
+                e.target.alt = 'Fallback Logo';
+            };
 
             const coloredLogoMap = {
                 'facebook': "https://upload.wikimedia.org/wikipedia/commons/b/b5/Facebook_Logo_%282023%29.png",
@@ -120,7 +125,11 @@
                     {
                         className: 'w-full h-40 bg-center bg-cover',
                         style: { backgroundImage: `url(${cardData.coverImage})` },
-                        onError: (e) => { e.target.onerror = null; e.target.style.backgroundImage = `url('https://placehold.co/600x200/6B7280/FFFFFF?text=Cover+Image')`; }
+                        onError: (e) => {
+                            console.error("Error loading cover image:", e.target.style.backgroundImage);
+                            e.target.onerror = null;
+                            e.target.style.backgroundImage = `url('https://placehold.co/600x200/6B7280/FFFFFF?text=Cover+Image')`;
+                        }
                     }
                 ),
                 React.createElement(
@@ -130,7 +139,11 @@
                         src: cardData.profileImage,
                         alt: 'Profile',
                         className: 'w-32 h-32 rounded-full object-cover border-4 border-white shadow-md mb-4',
-                        onError: (e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/128x128/9CA3AF/FFFFFF?text=Profile'; }
+                        onError: (e) => {
+                            console.error("Error loading profile image:", e.target.src);
+                            e.target.onerror = null;
+                            e.target.src = 'https://placehold.co/128x128/9CA3AF/FFFFFF?text=Profile';
+                        }
                     }),
                     React.createElement('h1', { className: 'text-3xl font-bold text-center mb-1 drop-shadow-md' }, cardData.name),
                     React.createElement('h2', { className: 'text-xl text-center mb-4 opacity-90 drop-shadow-sm' }, cardData.title),
@@ -213,7 +226,7 @@
                                             src: 'https://placehold.co/150x40/FFFFFF/000000?text=Google+Reviews', // Placeholder for GitHub Pages
                                             alt: 'Google Reviews',
                                             className: 'h-10 object-contain',
-                                            onError: (e) => { e.target.onerror = null; e.target.src = 'https://placehold.co/150x40/FFFFFF/000000?text=Google+Reviews'; }
+                                            onError: onErrorHandler // Use the common onError handler
                                         })
                                     )
                                 ) : (
@@ -306,8 +319,19 @@
         // Main App Component
         function App() {
             const [cardData, setCardData] = useState(() => {
-                const savedData = localStorage.getItem('cardGeneratorData');
-                return savedData ? JSON.parse(savedData) : {
+                let savedData = null;
+                try {
+                    const storedData = localStorage.getItem('cardGeneratorData');
+                    if (storedData) {
+                        savedData = JSON.parse(storedData);
+                    }
+                } catch (error) {
+                    // Log the error but don't crash the app
+                    console.error("Error parsing localStorage data, reverting to default:", error);
+                    localStorage.removeItem('cardGeneratorData'); // Clear potentially corrupted data
+                }
+
+                return savedData || {
                     coverImage: 'https://placehold.co/600x200/6B7280/FFFFFF?text=Cover+Image',
                     profileImage: 'https://placehold.co/128x128/9CA3AF/FFFFFF?text=Profile',
                     name: 'Your Name',
@@ -320,9 +344,9 @@
                         { id: 'cd-4', type: 'address', value: '1600 Amphitheatre Parkway, Mountain View, CA' },
                     ],
                     links: [
-                        { id: 'link-1', title: 'My Website', url: 'https://www.example.com', type: 'url', reviewText: '', customLogoUrl: '', textAboveButton: '', textBelowButton: '' },
-                        { id: 'link-2', title: 'LinkedIn Profile', url: 'https://www.linkedin.com/in/yourprofile', type: 'url', reviewText: '', customLogoUrl: '', textAboveButton: '', textBelowButton: '' },
-                        { id: 'link-3', type: 'google-review', url: 'https://g.page/your-business/review', reviewText: '', customLogoUrl: '', textAboveButton: 'Tell us about your experience!', textBelowButton: 'Your feedback helps us improve.' }
+                        { id: 'link-1', title: 'My Website', url: 'https://www.example.com', type: 'url', customLogoUrl: '', textAboveButton: '', textBelowButton: '' },
+                        { id: 'link-2', title: 'LinkedIn Profile', url: 'https://www.linkedin.com/in/yourprofile', type: 'url', customLogoUrl: '', textAboveButton: '', textBelowButton: '' },
+                        { id: 'link-3', type: 'google-review', url: 'https://g.page/your-business/review', customLogoUrl: '', textAboveButton: 'Tell us about your experience!', textBelowButton: 'Your feedback helps us improve.' }
                     ],
                     mediaItems: [
                         { id: 'media-1', type: 'video', url: 'https://www.youtube.com/embed/M7lc1UVf-VE' },
