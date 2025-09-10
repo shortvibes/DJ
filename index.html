@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:title" content="D&J Laser Graveringen's Digital Business Card">
+    <meta property="twitter:title" content="D&J Laser Graveringen's Digital Business Card">
+
+    <title>D&J Laser Graveringen's Digital Business Card</title>
+
+    <script>
+        "http" == window.location.href.substr(0, 4) && "/" != window.location.href.slice(-1) && window.location.replace(window.location.href + "/");
+    </script>
+
+    <style>
+        /* General Body & Modal Styles */
+        body {
+            font-family: sans-serif;
+            background-color: rgb(204, 201, 196);
+        }
+
+        #body {
+            font-family: sans-serif;
+        }
+
+        #modal {
+            background-color: rgb(221, 221, 221);
+            visibility: hidden;
+            top: 2rem;
+            opacity: 0;
+        }
+
+        /* Button & Link Colors */
+        .btn-orange {
+            background-color: rgb(254, 162, 0);
+        }
+
+        .btn-paypal {
+            background: rgb(0, 48, 135);
+        }
+
+        .btn-instagram {
+            background: rgb(255, 255, 255);
+        }
+
+        .btn-snapchat {
+            background: rgb(255, 252, 0);
+        }
+
+        .btn-facebook {
+            background: rgb(24, 119, 242);
+        }
+
+        .btn-pinterest {
+            background: rgb(189, 8, 28);
+        }
+
+        .btn-youtube {
+            background: rgb(255, 0, 0);
+        }
+
+
+        /* Range input styling */
+        input[type='range']::-moz-range-track {
+            background: none;
+        }
+
+        input[type='range']::-moz-range-thumb {
+            -moz-appearance: none;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 0.25rem;
+            border: none;
+            background: #FEA200;
+            z-index: 3;
+            cursor: pointer;
+        }
+
+        input[type='range']::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 0.25rem;
+            border: none;
+            background: #FEA200;
+            z-index: 3;
+            cursor: pointer;
+        }
+
+        /* Utility classes */
+        .closeColor {
+            filter: invert(1);
+        }
+
+        .topAction {
+            filter: invert(1)
+        }
+
+        .iconColor {
+            color: #eee;
+            filter: invert(1)
+        }
+
+        .cardColor {
+            color: #222 !important
+        }
+
+        .textColor {
+            color: #222 !important
+        }
+
+        .seekbarColor {
+            background: #FEA20080 !important
+        }
+
+        /* Featured section */
+        .featured .media {
+            background-color: rgb(255, 255, 255);
+        }
+    </style>
+
+    <link rel="stylesheet" href="./style.min.css">
+</head>
+
+<body id="body">
+    <div id="modal">
+        <a id="close" class="closeColor">
+            <div class="icon">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2">
+                    <path style="fill:none" d="M0 0h24v24H0z"></path>
+                    <path d="M18 6 6 18M6 6l12 12"
+                        style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:2px"></path>
+                </svg>
+            </div>
+        </a>
+        <div id="keyView">
+            <p class="textColor">
+                Use my public key to send me encrypted messages
+            </p>
+            <a download="" target="_blank" id="dlKey" rel="noreferrer" tabindex="-1" class="btn-orange"
+                href="./D&J Laser Graveringen's public key.asc">
+                <div class="icon iconColor">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2">
+                        <path style="fill:none" d="M0 0h24v24H0z"></path>
+                        <path d="M21 15v4c0 1.097-.903 2-2 2H5c-1.097 0-2-.903-2-2v-4m4-5 5 5 5-5m-5 5V3"
+                            style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:2px"></path>
+                    </svg>
+                </div>
+                <span class="iconColor">Download Key</span>
+            </a>
+        </div>
+        <div id="copyView">
+            <p class="textColor">
+                Copy and send the URL to share my Business Card
+            </p>
+            <button id="copyURL" class="btn-orange">
+                <div class="icon iconColor">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                        style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2">
+                        <path style="fill:none" d="M0 0h24v24H0z"></path>
+                        <path d="M22 11a2 2 0 0 0-2-2h-9a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2v-9Z"
+                            style="fill:none;stroke:#fff;stroke-width:2px"></path>
+                        <path d="M5 15H4c-1.097 0-2-.903-2-2V4c0-1.097.903-2 2-2h9c1.097 0 2 .903 2 2v1"
+                            style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:2px"></path>
+                    </svg>
+                </div>
+                <span class="iconColor">Copy URL</span>
+            </button>
+        </div>
+        <div id="qrView" class="textColor">
+            <div id="qr"></div>
+            <h3>Scan the QR Code</h3>
+            <p>to view my Business Card on another device</p>
+        </div>
+    </div>
+
+    <header>
+        <div id="topActions" style="display: none;">
+            <div>
+                <a id="share">
+                    <div class="icon topAction">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-miterlimit:2">
+                            <g>
+                                <path style="fill:none" d="M0 0h24v24H0z"></path>
+                                <clipPath id="a">
+                                    <path d="M0 0h24v24H0z"></path>
+                                </clipPath>
+                                <g clip-path="url(#a)">
+                                    <circle cx="17" cy="5" r="3" style="fill:none;stroke:#fff;stroke-width:2px"></circle>
+                                    <circle cx="5" cy="12" r="3" style="fill:none;stroke:#fff;stroke-width:2px"></circle>
+                                    <circle cx="17" cy="19" r="3" style="fill:none;stroke:#fff;stroke-width:2px"></circle>
+                                    <path d="m7.59 13.51 6.83 3.98m-.01-10.98-6.82 3.98"
+                                        style="fill:none;stroke:#fff;stroke-width:2px"></path>
+                                </g>
+                            </g>
+                        </svg>
+                    </div>
+                </a>
+                <a id="showQR">
+                    <div class="icon topAction">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2">
+                            <path style="fill:none" d="M0 0h24v24H0z"></path>
+                            <path d="M4 4h4v4H4V4ZM4 16h4v4H4v-4ZM16 4h4v4h-4V4Z"
+                                style="fill:none;stroke:#fff;stroke-width:2px"></path>
+                            <path d="M12 4v14c0 1.097.903 2 2 2h4c1.097 0 2-.903 2-2v-4c0-1.097-.903-2-2-2H4"
+                                style="fill:none;stroke:#fff;stroke-width:2px;stroke-linejoin:miter"></path>
+                            <path style="fill:#fff" d="M15 15h2v2h-2z"></path>
+                        </svg>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="headerImgC">
+            <img id="cover" src="./cover.png" alt="Background Pattern">
+        </div>
+    </header>
+
+    <main style="background-color: rgb(221, 221, 221); margin-top: 0px;">
+        <div id="info" class="textColor">
+            <p class="name">
+                D&J Laser Graveringen
+            </p>
+            <p class="jobtitle"> </p>
+            <p class="bizname">
+                Wie zijn wij en wat doen wij?
+            </p>
+        </div>
+        <p class="sub textColor"> <b>
+            Wij van D&J zijn een modern laser gravering bedrijf.
+            Onze focus ligt op werk in opdracht, waarbij de klant zelf de te graveren items aanleverd.
+            Om te ontzorgen kunnen wij deze items ook leveren en daarbij leveren wij ook eigen items.
+            <br>
+            De persoonlijke touch is onze kracht: van ontwerp tot eindproduct.
+            We combineren vakmanschap met slimme digitale oplossingen.
+            Denk aan NFC chips en QR codes in producten zoals:
+            <br>
+        	*	Google review borden
+        	*	Sleutelhangers
+        	*	Metalen Business kaarten
+        	*   Onderzetters
+        	*   Tumblers (drinkberkers)
+        	*	En veel meer
+        	<br>
+            Zo maken we graveren niet alleen mooi, maar ook functioneel.
+            Met onze digitale marketing insteek zorgen we dat elk product meer doet dan er goed uitzien – het verbindt. </b>
+        </p>
+
+        <a id="cta" rel="noreferrer" download="" target="_blank" aria-label="Save Contact" class="btn-orange"
+            href="djlasergraveringen.vcf">
+            <div class="icon iconColor">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                    style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2">
+                    <path style="fill:none" d="M0 0h24v24H0z"></path>
+                    <circle cx="8.5" cy="7" r="4" style="fill:none;stroke:#fff;stroke-width:2.29px"
+                        transform="matrix(.875 0 0 .875 4.563 -.625)"></circle>
+                    <path d="M86 181c0-3.863 3.137-7 7-7s7 3.137 7 7" style="fill:none;stroke:#fff;stroke-width:2px"
+                        transform="translate(-81 -163)"></path>
+                    <path d="M104 168v6m3-3-3 3-3-3" style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:2px"
+                        transform="translate(-92 -152)"></path>
+                </svg>
+            </div>
+            <p class="iconColor">Save Contact</p>
+            <br>
+        </a>
+           <!-- inactief
+            <div class="textColor">
+                    <h2 class="section textColor">
+                        Tevreden over onze service?
+                        <br> 
+                        Laat een Google review achter!
+                        <br>
+                        5 sterren worden wij blij van!
+                    </h2>
+            <div> Einde-->
+        <!-- New Google Review Button styled like Save Contact -->
+        <!--Deze code is nu nu actief
+        <a id="cta" rel="noreferrer" target="_blank" aria-label="Google Review" style="background-color: rgb(254, 162, 0);"href="https://search.google.com/local/writereview?placeid=YOUR_PLACE_ID_HERE">
+            <div class="icon iconColor">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="#fff">
+                <path d="M21.35 11.1H12v2.9h5.35c-.25 1.4-1.55 4.1-5.35 4.1-3.25 0-5.9-2.7-5.9-6s2.65-6 5.9-6c1.85 0 3.1.8 3.8 1.5l2.6-2.5C17.3 3.9 15.05 3 12 3 6.95 3 3 6.95 3 12s3.95 9 9 9c5.2 0 8.65-3.65 8.65-8.8 0-.6-.05-1.1-.15-1.6z"/>
+                </svg>
+            </div>
+        <p class="iconColor">Google Review</p>
+        </a>
+        Einde inactieve code-->
+
+        <div class="actions">
+            <div class="actionsC"> 
+                <div class="actionBtn">
+                    <a href="mailto:djlasergraveringern@gmail.com" target="_blank" rel="noopener noreferrer"
+                        aria-label="Email" class="btn-orange">
+                        <div class="icon iconColor">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                                style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2">
+                                <path style="fill:none" d="M0 0h24v24H0z"></path>
+                                <path
+                                    d="M22 33.75c0-.966-.896-1.75-2-1.75H4c-1.104 0-2 .784-2 1.75v10.5c0 .966.896 1.75 2 1.75h16c1.104 0 2-.784 2-1.75v-10.5Z"
+                                    style="fill:none;stroke:#fff;stroke-width:1.86px"
+                                    transform="matrix(1 0 0 1.14286 0 -32.571)"></path>
+                                <path d="m18 7.042-6 2.625-6-2.625"
+                                    style="fill:none;fill-rule:nonzero;stroke:#fff;stroke-width:1.86px"
+                                    transform="matrix(1 0 0 1.14286 0 1.952)"></path>
+                            </svg>
+                        </div>
+                    </a>
+                    <p class="textColor">
+                        Email
+                    </p>
+                </div>
+            </div>
+            <div class="actionsC">
+                <div class="actionBtn">
+                    <a target="_blank" rel="noopener noreferrer" aria-label="Location" class="btn-orange"
+                        href="https://www.google.com/maps/place/Regina+Kok+Hofje,+4021+EC+Maurik/@51.9621382,5.417795,17z/data=!3m1!4b1!4m6!3m5!1s0x47c659e71475acfd:0xffd1fdd992bdd010!8m2!3d51.9621382!4d5.4203699!16s%2Fg%2F1tdmp82q?entry=ttu&g_ep=EgoyMDI1MDkwNy4wIKXMDSoASAFQAw%3D%3D">
+                        <div class="icon iconColor">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xml:space="preserve"
+                                style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:2">
+                                <g>
+                                    <path style="fill:none" d="M0 0h24v24H0z"></path>
+                                    <circle cx="12" cy="10" r="3" style="fill:none;stroke:#fff;stroke-width:2px">
+                                    </circle>
+                                    <path d="M40 29c4.967 0 9 4.033 9 9 0 7-9 13-9 13s-9-6.033-9-13c0-4.967 4.033-9 9-9Z"
+                                        style="fill:none;stroke:#fff;stroke-width:2px" transform="translate(-28 -28)">
+                                    </path>
+                                </g>
+                            </svg>
+                        </div>
+                    </a>
+                    <p class="textColor">
+                        Location
+                    </p>
+                </div>
+            </div>
+        </div>
+        <!--Deze code is inactief
+        <div class="actions secondary">
+            <div class="actionsC">
+                <div class="actionBtn secBtn">
+                    <a href="https://paypal.me/username" target="_blank" rel="noopener noreferrer" aria-label="PayPal"
+                        class="btn-paypal">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" width="24" height="24">
+                                <path
+                                    d="M19.554 9.488c.121.563.106 1.246-.04 2.051-.582 2.978-2.477 4.466-5.683 4.466h-.442a.666.666 0 0 0-.444.166.72.72 0 0 0-.239.427l-.041.189-.553 3.479-.021.151a.706.706 0 0 1-.247.426.666.666 0 0 1-.447.166H8.874a.395.395 0 0 1-.331-.15.457.457 0 0 1-.09-.363c.061-.373.148-.938.267-1.689.117-.75.206-1.314.267-1.689s.15-.938.272-1.685c.121-.748.212-1.31.271-1.685.033-.248.179-.371.433-.371h1.316c.893.013 1.682-.057 2.375-.211 1.172-.262 2.134-.744 2.886-1.449.685-.637 1.203-1.462 1.56-2.473.162-.47.277-.917.352-1.338.006-.041.014-.066.025-.074.008-.011.022-.014.035-.011a.378.378 0 0 1 .062.035c.524.398.854.941.98 1.632zm-1.728-2.836c0 .717-.154 1.508-.465 2.374-.537 1.562-1.547 2.618-3.037 3.168-.758.269-1.602.408-2.535.425 0 .006-.301.007-.904.007l-.903-.007c-.672 0-1.067.32-1.187.964-.013.053-.298 1.83-.855 5.329-.008.066-.048.102-.121.102H4.854a.473.473 0 0 1-.369-.165.469.469 0 0 1-.115-.39L6.702 3.664a.784.784 0 0 1 .276-.483.785.785 0 0 1 .519-.19h6.014c.228 0 .555.044.979.131.428.084.801.194 1.123.321.718.274 1.266.688 1.645 1.237.379.552.568 1.207.568 1.972z">
+                                </path>
+                            </svg>
+                        </div>
+                    </a>
+                </div> 
+            </div> Einde-->
+            <div class="actionsC"> <!--Code inactief
+                <div class="actionBtn secBtn">
+                    <a href="https://instagram.com/username" target="_blank" rel="noopener noreferrer"
+                        aria-label="Instagram" class="btn-instagram">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+                                <path
+                                    d="M4.796,1.577C4.072,1.859 3.459,2.234 2.847,2.847C2.234,3.455 1.859,4.073 1.577,4.793C1.304,5.49 1.121,6.291 1.067,7.463C1.013,8.634 1,9.01 1,11.998C1,14.985 1.013,15.361 1.067,16.533C1.121,17.705 1.309,18.505 1.577,19.203C1.859,19.927 2.234,20.54 2.847,21.153C3.459,21.766 4.072,22.141 4.796,22.423C5.494,22.696 6.294,22.879 7.466,22.933C8.637,22.987 9.013,23 12,23C14.987,23 15.363,22.987 16.534,22.933C17.706,22.879 18.506,22.691 19.204,22.423C19.928,22.141 20.541,21.766 21.153,21.153C21.766,20.54 22.141,19.927 22.423,19.203C22.696,18.505 22.879,17.705 22.933,16.533C22.987,15.361 23,14.985 23,11.998C23,9.01 22.987,8.634 22.933,7.463C22.879,6.291 22.691,5.49 22.423,4.793C22.141,4.073 21.766,3.455 21.158,2.847C20.545,2.234 19.933,1.859 19.208,1.577C18.511,1.304 17.71,1.121 16.539,1.067C15.367,1.013 14.991,1 12.004,1C9.017,1 8.642,1.013 7.47,1.067C6.294,1.116 5.494,1.304 4.796,1.577ZM16.445,3.044C17.518,3.093 18.099,3.272 18.488,3.424C19.002,3.625 19.369,3.862 19.754,4.247C20.138,4.632 20.375,4.998 20.576,5.513C20.728,5.902 20.907,6.483 20.957,7.557C21.01,8.715 21.019,9.064 21.019,12.002C21.019,14.941 21.006,15.289 20.957,16.448C20.907,17.521 20.728,18.103 20.576,18.492C20.375,19.006 20.138,19.373 19.754,19.757C19.369,20.142 19.002,20.379 18.488,20.58C18.099,20.732 17.518,20.911 16.445,20.961C15.287,21.014 14.938,21.023 12,21.023C9.062,21.023 8.713,21.01 7.555,20.961C6.482,20.911 5.901,20.732 5.512,20.58C4.998,20.379 4.631,20.142 4.246,19.757C3.862,19.373 3.625,19.006 3.424,18.492C3.272,18.103 3.093,17.521 3.043,16.448C2.99,15.289 2.981,14.941 2.981,12.002C2.981,9.064 2.994,8.715 3.043,7.557C3.093,6.483 3.272,5.902 3.424,5.513C3.625,4.998 3.862,4.632 4.246,4.247C4.631,3.862 4.998,3.625 5.512,3.424C5.901,3.272 6.482,3.093 7.555,3.044C8.713,2.99 9.062,2.981 12,2.981C14.938,2.981 15.287,2.99 16.445,3.044ZM6.352,12.002C6.352,15.124 8.883,17.651 12,17.651C15.117,17.651 17.648,15.12 17.648,12.002C17.648,8.885 15.121,6.354 12,6.354C8.879,6.354 6.352,8.88 6.352,12.002ZM15.667,12.002C15.667,14.028 14.026,15.67 12,15.67C9.974,15.67 8.333,14.028 8.333,12.002C8.333,9.976 9.974,8.335 12,8.335C14.026,8.335 15.667,9.976 15.667,12.002ZM17.876,4.811C18.604,4.811 19.195,5.402 19.195,6.13C19.195,6.858 18.604,7.449 17.876,7.449C17.148,7.449 16.557,6.858 16.557,6.13C16.557,5.402 17.148,4.811 17.876,4.811Z"
+                                    style="fill:url(#CYtxIzE);fill-rule:nonzero;"></path>
+                                <defs>
+                                    <radialGradient id="CYtxIzE" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse"
+                                        gradientTransform="matrix(-22,22,-22,-22,23,1)">
+                                        <stop offset="0" style="stop-color:#4c63d2;stop-opacity:1"></stop>
+                                        <stop offset="0.4" style="stop-color:#bc3081;stop-opacity:1"></stop>
+                                        <stop offset="0.75" style="stop-color:#f47133;stop-opacity:1"></stop>
+                                        <stop offset="1" style="stop-color:#fed576;stop-opacity:1"></stop>
+                                    </radialGradient>
+                                </defs>
+                            </svg>
+                        </div> 
+                    </a>
+                </div> Einde -->
+            </div>  
+            <div class="actionsC">
+                <div class="actionBtn secBtn"> <!-- Start inactief
+                    <a href="https://www.snapchat.com/add/username" target="_blank" rel="noopener noreferrer"
+                        aria-label="Snapchat" class="btn-snapchat">
+                        <div class="icon">
+                            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd"
+                                clip-rule="evenodd" stroke-linejoin="round">
+                                <path
+                                    d="M20.744 16.732c-3.156-1.528-3.659-3.887-3.681-4.062-.027-.212-.058-.378.176-.594.225-.208 1.225-.827 1.503-1.021.459-.321.661-.641.512-1.035-.104-.272-.358-.375-.625-.375-.084.001-.168.01-.25.028-.504.11-.994.362-1.277.431a.52.52 0 0 1-.104.014c-.151 0-.209-.068-.194-.249.035-.551.11-1.627.023-2.631-.119-1.382-.565-2.067-1.093-2.672C15.478 4.272 14.291 3.01 12 3.01S8.523 4.272 8.269 4.562c-.53.606-.975 1.29-1.094 2.672-.087 1.005-.008 2.08.024 2.631.01.173-.043.249-.194.249a.457.457 0 0 1-.104-.014c-.283-.068-.772-.321-1.276-.43a1.11 1.11 0 0 0-.251-.028c-.268 0-.52.104-.625.375-.149.393.052.713.513 1.034.277.194 1.278.813 1.503 1.021.233.216.203.383.176.594-.022.178-.526 2.537-3.681 4.062-.185.09-.5.279.055.585.87.481 1.45.43 1.9.72.383.246.157.777.435.969.341.236 1.351-.017 2.655.414 1.094.36 1.758 1.378 3.697 1.378 1.94 0 2.623-1.022 3.698-1.378 1.301-.431 2.313-.178 2.655-.414.278-.192.052-.723.434-.969.451-.29 1.03-.239 1.901-.72.554-.302.239-.492.054-.581z"
+                                    fill="#fff" fill-rule="nonzero"></path>
+                                <path
+                                    d="M6.145 8.775a14.229 14.229 0 0 1 .034-1.626c.144-1.68.693-2.509 1.338-3.246C7.823 3.554 9.241 2.01 12 2.01c2.76 0 4.18 1.545 4.487 1.898.642.736 1.192 1.565 1.337 3.244.047.551.05 1.123.036 1.626.098-.031.199-.058.3-.08.153-.035.309-.052.469-.053.682 0 1.293.322 1.56 1.021.307.81.07 1.549-.875 2.209-.211.147-.879.555-1.226.803.145.478.812 2.05 3.092 3.154.222.107.482.299.623.51.15.224.218.476.195.749-.024.268-.134.72-.825 1.098a5.57 5.57 0 0 1-1.331.521c-.123.033-.235.053-.337.085a2.614 2.614 0 0 1-.068.319 1.303 1.303 0 0 1-.514.711c-.213.147-.537.257-.978.287-.441.03-1.124-.014-1.931.253-.36.119-.661.339-1.005.546-.742.448-1.603.883-3.007.883-1.185 0-1.98-.311-2.647-.677-.488-.268-.873-.59-1.363-.751-.809-.268-1.493-.224-1.932-.254-.442-.03-.766-.14-.978-.287a1.31 1.31 0 0 1-.515-.711 2.834 2.834 0 0 1-.067-.319c-.102-.032-.215-.052-.337-.085a5.57 5.57 0 0 1-1.331-.521c-.691-.381-.802-.832-.825-1.1a1.133 1.133 0 0 1 .193-.748c.141-.212.402-.405.624-.513 2.281-1.103 2.947-2.675 3.092-3.154-.346-.247-1.015-.655-1.226-.802-.947-.661-1.182-1.399-.874-2.214.266-.692.874-1.016 1.561-1.016.157 0 .313.018.46.05.104.023.207.051.308.083zm14.599 7.957c-3.156-1.528-3.659-3.887-3.681-4.062-.027-.212-.058-.378.176-.594.225-.208 1.225-.827 1.503-1.021.459-.321.661-.641.512-1.035-.104-.272-.358-.375-.625-.375-.084.001-.168.01-.25.028-.504.11-.994.362-1.277.431a.52.52 0 0 1-.104.014c-.151 0-.209-.068-.194-.249.035-.551.11-1.627.023-2.631-.119-1.382-.565-2.067-1.093-2.672C15.478 4.272 14.291 3.01 12 3.01S8.523 4.272 8.269 4.562c-.53.606-.975 1.29-1.094 2.672-.087 1.005-.008 2.08.024 2.631.01.173-.043.249-.194.249a.457.457 0 0 1-.104-.014c-.283-.068-.772-.321-1.276-.43a1.11 1.11 0 0 0-.251-.028c-.268 0-.52.104-.625.375-.149.393.052.713.513 1.034.277.194 1.278.813 1.503 1.021.233.216.203.383.176.594-.022.178-.526 2.537-3.681 4.062-.185.09-.5.279.055.585.87.481 1.45.43 1.9.72.383.246.157.777.435.969.341.236 1.351-.017 2.655.414 1.094.36 1.758 1.378 3.697 1.378 1.94 0 2.623-1.022 3.698-1.378 1.301-.431 2.313-.178 2.655-.414.278-.192.052-.723.434-.969.451-.29 1.03-.239 1.901-.72.554-.302.239-.492.054-.581z">
+                                </path>
+                            </svg>
+                        </div> 
+                    </a> Einde -->
+                </div>
+            </div>
+            <div class="actionsC">
+                <div class="actionBtn secBtn"> <!-- Start inactief
+                    <a href="https://facebook.com/username" target="_blank" rel="noopener noreferrer"
+                        aria-label="Facebook" class="btn-facebook">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.001 2.002c-5.522 0-9.999 4.477-9.999 9.999 0 4.99 3.656 9.126 8.437 9.879v-6.988h-2.54v-2.891h2.54V9.798c0-2.508 1.493-3.891 3.776-3.891 1.094 0 2.24.195 2.24.195v2.459h-1.264c-1.24 0-1.628.772-1.628 1.563v1.875h2.771l-.443 2.891h-2.328v6.988C18.344 21.129 22 16.992 22 12.001c0-5.522-4.477-9.999-9.999-9.999z">
+                                </path>
+                            </svg>
+                        </div>
+                    </a> Einde -->
+                </div> 
+            </div>
+            <div class="actionsC">
+                <div class="actionBtn secBtn"> <!-- Start inactief
+                    <a href="https://pinterest.com/username" target="_blank" rel="noopener noreferrer"
+                        aria-label="Pinterest" class="btn-pinterest">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24">
+                                <path
+                                    d="M11.99 2C6.472 2 2 6.473 2 11.99c0 4.232 2.633 7.85 6.35 9.306-.088-.79-.166-2.006.034-2.868.182-.78 1.172-4.966 1.172-4.966s-.299-.599-.299-1.484c0-1.388.805-2.425 1.808-2.425.853 0 1.264.64 1.264 1.407 0 .858-.546 2.139-.827 3.327-.235.994.499 1.805 1.479 1.805 1.775 0 3.141-1.872 3.141-4.575 0-2.392-1.719-4.064-4.173-4.064-2.843 0-4.512 2.132-4.512 4.335 0 .858.331 1.779.744 2.28a.3.3 0 0 1 .069.286c-.076.315-.245.994-.277 1.133-.044.183-.145.222-.335.134-1.247-.581-2.027-2.405-2.027-3.871 0-3.151 2.289-6.045 6.601-6.045 3.466 0 6.159 2.469 6.159 5.77 0 3.444-2.171 6.213-5.184 6.213-1.013 0-1.964-.525-2.29-1.146l-.623 2.374c-.225.868-.834 1.956-1.241 2.62a10 10 0 0 0 2.958.445c5.517 0 9.99-4.473 9.99-9.99S17.507 2 11.99 2">
+                                </path>
+                            </svg>
+                        </div>
+                    </a> Einde -->
+                </div>
+            </div>
+            <div class="actionsC">
+                <div class="actionBtn secBtn"> <!--Start inactief
+                    <a href="https://youtube.com/username" target="_blank" rel="noopener noreferrer" aria-label="YouTube"
+                        class="btn-youtube">
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="#fff" viewBox="0 0 24 24">
+                                <path
+                                    d="M21.593 7.203a2.506 2.506 0 0 0-1.762-1.766C18.265 5.007 12 5 12 5s-6.264-.007-7.831.404a2.56 2.56 0 0 0-1.766 1.778c-.413 1.566-.417 4.814-.417 4.814s-.004 3.264.406 4.814c.23.857.905 1.534 1.763 1.765 1.582.43 7.83.437 7.83.437s6.265.007 7.831-.403a2.515 2.515 0 0 0 1.767-1.763c.414-1.565.417-4.812.417-4.812s.02-3.265-.407-4.831zM9.996 15.005l.005-6 5.207 3.005-5.212 2.995z">
+                                </path>
+                            </svg>
+                        </div>
+                    </a> Einde -->
+                </div>
+            </div>
+        </div>
+
+        <div class="featured">
+            <div>
+                <div class="media">
+                    <p class="textC cardColor">Laser gravure kent vele opties en mogelijkheden, vaak is het lastig om je een voorstelling van iets te maken.
+                    Daarom kunt u onze "Samples" pagina bezoeken om daar enkele mogelijkheden te bekijken.
+                    <br>Mocht U overige vragen omtrent materiaal, design of prijzen hebben, neem dan vooral contact met ons op via email. 
+                    <br>U kunt gebruik maken van de email knop op deze hierboven. 
+                    <br>Tot slot bij D&J Laser Graveringen leveren wij:
+                        <br>
+                        “Lasergraveren met een persoonlijke touch én digitale kracht.”
+                        “Van ontwerp tot eindproduct – stijlvol, slim en verbonden.”
+                        “Uniek design. Slimme technologie. Jouw verhaal.”
+                        “Maak indruk – in metaal, hout én digitaal.”   
+                    </p>
+                </div>
+            </div>
+            <div>
+                <div class="media">
+                    <img src="./media/samples.jpeg" alt="Product image">
+                    <div class="controls cardColor prodInfo">
+                        <p class="title">
+                            Laser gravure voorbeelden
+                        </p>
+                        <p class="sub">
+                            maatwerk
+                        </p>
+                        <a target="_blank" class="label btn-orange" href="samples/gallery.html"
+                            style="line-height: 1.5rem;">
+                            <p class="iconColor">Bekijk onze samples</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="featured"> <!--
+            <h2 class="section textColor">
+                <!--dexe comment is niet zichtbaar Digitale Marketing
+            </h2>
+            <div> Einde--> 
+                <div class="media">
+                    <img src="./media/what-is-digital-marketing.png" alt="Product image">
+                    <div class="controls cardColor prodInfo">
+                        <p class="title">
+                            Digitale marketing
+                        </p>
+                        <p class="sub">
+                            Digitale marketing is een krachtig hulpmiddel voor het midden- en kleinbedrijf (MKB). Het stelt je in staat om op een snelle, efficiënte en moderne manier met je klanten in contact te komen. Vergeet dure drukkosten voor visitekaartjes en flyers die vaak in de prullenbak belanden. Met digitale marketing kun je je bedrijfsinformatie direct en duurzaam delen.
+                            <br>
+                            De kracht van digitaal
+                            Het belangrijkste doel van digitale marketing voor het MKB is het vereenvoudigen en versnellen van je bereik. In plaats van een fysiek visitekaartje, kunnen je klanten je digitale contactgegevens ontvangen met een enkele aanraking, dankzij technologieën zoals NFC of een simpele QR-codescan. Omdat bijna iedereen tegenwoordig een smartphone heeft, is het delen van informatie over je bedrijf nog nooit zo eenvoudig geweest.
+                            <br>
+                            Social media en digitale content
+                            Sociale mediaplatforms vormen het hart van deze digitale transformatie. Ze zijn perfect voor het delen van je boodschap en het aangaan van interactie met je publiek. Maar het stopt daar niet. Denk eraan hoe je je klanten kunt boeien met een 360-graden virtuele winkel tour, waardoor ze je zaak vanuit het comfort van hun eigen huis kunnen verkennen. Dit soort meeslepende digitale ervaringen kunnen een blijvende indruk achterlaten en je bedrijf onderscheiden.
+                            <br>
+                            Deze verschuiving naar digitaal gaat niet alleen over het besparen van geld op drukwerk; het gaat erom je bedrijf toegankelijker, interactiever en gedenkwaardiger te maken in de snelle wereld van vandaag.
+                        </p>
+                        <a target="_blank" class="label btn-orange" href="https://shortvibes.github.io"
+                            style="line-height: 1.5rem;">
+                            <p class="iconColor">Bekijk de mogelijk heden</p>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div></div>
+        </div>
+
+        <div class="featured">
+            <h2 class="section textColor">
+                Graag tot ziens
+            </h2>
+            <div>
+                <div class="media">
+                    <p class="textC cardColor">© 2025 D&J Laser Graveringen.
+                        Alle rechten voorbehouden.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="./qrcode.min.js"></script>
+    <script>
+        let m = document.getElementById("modal"),
+            c = document.getElementById("close"),
+            ki = document.getElementById("keyView"),
+            cv = document.getElementById("copyView"),
+            curl = document.getElementById("copyURL"),
+            qrv = document.getElementById("qrView"),
+            qr = document.getElementById("qr"),
+            s = document.getElementById("share"),
+            sqr = document.getElementById("showQR"),
+            sk = document.getElementById("showKey");
+
+        function tC(e) {
+            "2rem" == e.style.top ? (e.style.visibility = "visible", e.style.top = "0px", e.style.opacity = 1) : (e.style.top = "2rem", e.style.opacity = 0, setTimeout(() => {
+                e.style.visibility = "hidden"
+            }, 200))
+        }
+
+        function dN(e) {
+            e.style.display = "none"
+        }
+
+        window.addEventListener("load", () => {
+            document.querySelector("#topActions").style.display = "flex", qr.innerHTML = new QRCode({
+                content: window.location.href,
+                container: "svg-viewbox",
+                join: !0,
+                ecl: "L",
+                padding: 0
+            }).svg()
+        }), navigator.canShare ? s.addEventListener("click", () => {
+            navigator.share({
+                title: document.title,
+                text: "You can view my Digital Business Card here:",
+                url: window.location.href
+            })
+        }) : s.addEventListener("click", () => {
+            tC(m), cv.style.display = "flex", dN(qrv), ki && dN(ki)
+        }), sqr.addEventListener("click", () => {
+            tC(m), qrv.style.display = "block", dN(cv), ki && dN(ki)
+        }), sk && sk.addEventListener("click", () => {
+            tC(m), ki && (ki.style.display = "flex"), dN(cv), dN(qrv)
+        }), c.addEventListener("click", () => tC(m)), curl.addEventListener("click", async () => {
+            let e = curl.querySelectorAll(".iconColor")[1];
+            await navigator.clipboard.writeText(window.location.href).then(t => {
+                e.innerText = "Copied", setTimeout(() => {
+                    e.innerText = "Copy URL"
+                }, 1e3)
+            })
+        });
+    </script>
+    <script>
+        let pC = document.querySelectorAll(".pCtrl"),
+            pP = document.querySelectorAll(".playPause"),
+            srcs = document.querySelectorAll(".source");
+        srcs.forEach(e => {
+            e.style.pointerEvents = "none", e.removeAttribute("controls")
+        }), pC.forEach((e, l) => {
+            e.style.display = "flex";
+            let r = e.querySelector(".currentTime"),
+                s = e.querySelector(".seekBar"),
+                t = e.querySelector(".playPause"),
+                a = t.querySelector(".play"),
+                c = t.querySelector(".pause");
+            srcs[l].addEventListener("timeupdate", () => {
+                let e = srcs[l].currentTime,
+                    t = 100 / srcs[l].duration * e;
+                s.value = t, 100 == t && (s.value = 0, a.style.display = "block", c.style.display = "none");
+                let o = Math.floor(e / 60),
+                    y = Math.floor(e % 60);
+                o.toString().length < 2 && (o = "0" + o), y.toString().length < 2 && (y = "0" + y), r.value = o + ":" + y
+            }), s.addEventListener("change", () => {
+                srcs[l].currentTime = srcs[l].duration * (parseInt(s.value) / 100)
+            }), t.addEventListener("click", () => {
+                srcs[l].paused ? (srcs.forEach((e, r) => {
+                    l != r && (e.paused || e.pause())
+                }), pP.forEach((e, l) => {
+                    let r = e.querySelector(".play"),
+                        s = e.querySelector(".pause");
+                    r.style.display = "block", s.style.display = "none"
+                }), srcs[l].play(), a.style.display = "none", c.style.display = "block") : (srcs[l].pause(), c.style.display = "none", a.style.display = "block")
+            })
+        });
+    </script>
+</body>
+
+</html>
