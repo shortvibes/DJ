@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Photo Gallery (Import / Export / Resize)</title>
+  <style>
+    :root { --bg:#0e0f13; --card:#151821; --muted:#8b90a1; --text:#e8eaf1; --brand:#6d7cff; }
+    *{box-sizing:border-box} body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial;color:var(--text);background:var(--bg)}
+    .wrap{max-width:1100px;margin:auto;padding:1.2rem;}
+    header{position:sticky;top:0;background:#0f1220;padding-bottom:.6rem;border-bottom:1px solid #1b2130}
+    h1{margin:0;font-size:clamp(1.2rem,2.2vw,1.6rem)} .sub{color:var(--muted);margin-top:.25rem;font-size:.95rem}
+    .controls{display:grid;gap:.8rem;grid-template-columns:1fr; margin-top:.9rem}
+    @media(min-width:960px){.controls{grid-template-columns:1fr auto auto auto auto auto}}
+    .btn,.file-label{display:inline-flex;align-items:center;gap:.5rem;cursor:pointer;border:1px solid #2b3246;background:#141723;color:var(--text);padding:.7rem 1rem;border-radius:12px;text-decoration:none}
+    input[type=file]{position:absolute;left:-9999px}
+    .url-add{display:flex;gap:.6rem}
+    .url-add input{flex:1;padding:.7rem;border-radius:12px;border:1px solid #2b3246;background:#0f1220;color:var(--text)}
+    .dropzone{margin:1rem 0;padding:1.25rem;border:2px dashed #2c3346;border-radius:12px;text-align:center;color:var(--muted)}
+    .dropzone.highlight{border-color:var(--brand);color:#cfd3ff}
+    .gallery{list-style:none;padding:0;margin:1.25rem 0 2.5rem;display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+    .item{position:relative;background:var(--card);border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .item img{width:100%;height:auto;object-fit:cover;display:block}
+    .uniform .item{aspect-ratio:1/1;} /* uniform square crop */
+    .item .remove{position:absolute;top:.5rem;right:.5rem;border:none;border-radius:10px;padding:.35rem .5rem;background:rgba(0,0,0,.35);color:#fff;cursor:pointer}
+  </style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <h1>Photo Gallery</h1>
+    <p class="sub">Import an existing exported gallery, add more pictures, resize, preview, and export again.</p>
+    <div class="controls">
+      <!-- File input -->
+      <label class="file-label">
+        📁 Add Images
+        <input id="fileInput" type="file" accept="image/*" multiple />
+      </label>
+      <!-- URL input -->
+      <form class="url-add" id="urlForm" autocomplete="off">
+        <input id="urlInput" type="url" placeholder="Image URL" />
+        <button class="btn" type="submit">Add URL</button>
+      </form>
+      <!-- Resize toggle -->
+      <button class="btn" id="resizeBtn" type="button">Resize Images</button>
+      <!-- Import gallery -->
+      <label class="file-label">
+        📂 Import Gallery
+        <input id="importInput" type="file" accept=".html" />
+      </label>
+      <!-- Export / Preview -->
+      <button class="btn" id="previewBtn" type="button">Preview</button>
+      <button class="btn" id="exportBtn" type="button">Export HTML</button>
+      <!-- Clear -->
+      <button class="btn" id="clearBtn" type="button">Clear All</button>
+    </div>
+    <div id="dropzone" class="dropzone">Drag & drop images here, or paste from clipboard.</div>
+  </div>
+</header>
+
+<main class="wrap">
+  <ul id="gallery" class="gallery"></ul>
+</main>
+
+<script>
+(function(){
+  const gallery=document.getElementById('gallery');
+  const fileInput=document.getElementById('fileInput');
+  const urlForm=document.getElementById('urlForm');
+  const urlInput=document.getElementById('urlInput');
+  const clearBtn=document.getElementById('clearBtn');
+  const resizeBtn=document.getElementById('resizeBtn');
+  const exportBtn=document.getElementById('exportBtn');
+  const previewBtn=document.getElementById('previewBtn');
+  const dropzone=document.getElementById('dropzone');
+  const importInput=document.getElementById('importInput');
+
+  function addImage(src){
+    const img=document.createElement('img'); img.src=src; img.alt='Photo'; img.dataset.original=src;
+    const rm=document.createElement('button'); rm.textContent='×'; rm.className='remove';
+    const fig=document.createElement('figure'); fig.className='item'; fig.append(img,rm);
+    rm.onclick=()=>fig.remove();
+    gallery.appendChild(fig);
+  }
+
+  fileInput.onchange=e=>{
+    [...e.target.files].forEach(f=>{ if(f.type.startsWith('image/')) addImage(URL.createObjectURL(f)) });
+    fileInput.value='';
+  };
+  urlForm.onsubmit=e=>{
+    e.preventDefault(); if(!urlInput.value.trim())return;
+    addImage(urlInput.value.trim()); urlInput.value='';
+  };
+  ;['dragenter','dragover'].forEach(ev=>dropzone.addEventListener(ev,e=>{e.preventDefault();dropzone.classList.add('highlight')}));
+  ;['dragleave','drop'].forEach(ev=>dropzone.addEventListener(ev,e=>{e.preventDefault();dropzone.classList.remove('highlight')}));
+  dropzone.ondrop=e=>{
+    [...e.dataTransfer.files].forEach(f=>{if(f.type.startsWith('image/'))addImage(URL.createObjectURL(f))});
+  };
+  window.addEventListener('paste',e=>{
+    [...(e.clipboardData?.items||[])].forEach(it=>{if(it.type.startsWith('image/')){const f=it.getAsFile();addImage(URL.createObjectURL(f))}});
+  });
+  clearBtn.onclick=()=>gallery.innerHTML='';
+  resizeBtn.onclick=()=>gallery.classList.toggle('uniform');
+
+  async function urlToData(url){
+    if(url.startsWith('data:')) return url;
+    try{const r=await fetch(url);const b=await r.blob();
+      return await new Promise(res=>{const fr=new FileReader();fr.onload=()=>res(fr.result);fr.readAsDataURL(b);});
+    }catch{return url}
+  }
+  async function buildStandaloneHTML(){
+    const imgs=[...gallery.querySelectorAll('img')];
+    const list=await Promise.all(imgs.map(async im=>({src:await urlToData(im.dataset.original||im.src)})));
+    return `<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gallery</title><style>body{font-family:sans-serif;background:#f6f7fb;margin:0;padding:1rem}
+.wrap{max-width:1100px;margin:auto}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+img{width:100%;height:auto;object-fit:cover;border-radius:8px;box-shadow:0 6px 16px rgba(0,0,0,.25)}</style></head>
+<body><div class="wrap"><h1>Gallery</h1><div class="grid">
+${list.map(i=>`<img src="${i.src}" alt="Photo">`).join('')}
+</div></div></body></html>`;
+  }
+  previewBtn.onclick=async()=>{const html=await buildStandaloneHTML();const blob=new Blob([html],{type:'text/html'});window.open(URL.createObjectURL(blob),'_blank')};
+  exportBtn.onclick=async()=>{const html=await buildStandaloneHTML();const blob=new Blob([html],{type:'text/html'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='gallery.html';a.click()};
+
+  // Import existing gallery.html
+  importInput.onchange=async e=>{
+    const file=e.target.files[0]; if(!file) return;
+    const text=await file.text();
+    const parser=new DOMParser(); const doc=parser.parseFromString(text,'text/html');
+    const imgs=doc.querySelectorAll('img');
+    imgs.forEach(img=> addImage(img.src));
+    importInput.value='';
+  };
+})();
+</script>
+</body>
+</html>

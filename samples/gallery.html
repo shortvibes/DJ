@@ -1,0 +1,655 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2575.7">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6d6d6d; -webkit-text-stroke: #6d6d6d}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #6b0001; -webkit-text-stroke: #6b0001}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #fb0007; -webkit-text-stroke: #fb0007}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #0000ff; -webkit-text-stroke: #0000ff}
+    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; -webkit-text-stroke: #000000}
+    p.p6 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #4d5055; -webkit-text-stroke: #4d5055}
+    p.p7 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; color: #18702b; -webkit-text-stroke: #18702b}
+    p.p8 {margin: 0.0px 0.0px 0.0px 0.0px; font: 14.0px Menlo; -webkit-text-stroke: #000000; min-height: 16.0px}
+    span.s1 {font-kerning: none; background-color: #ecf1f7}
+    span.s2 {font-kerning: none; color: #fb0007; background-color: #ecf1f7; -webkit-text-stroke: 0px #fb0007}
+    span.s3 {font-kerning: none; color: #2a2a2a; background-color: #ecf1f7; -webkit-text-stroke: 0px #2a2a2a}
+    span.s4 {font-kerning: none; color: #000000; background-color: #ecf1f7; -webkit-text-stroke: 0px #000000}
+    span.s5 {font-kerning: none; color: #0000ff; background-color: #ecf1f7; -webkit-text-stroke: 0px #0000ff}
+    span.s6 {font-kerning: none; color: #6b0001; background-color: #ecf1f7; -webkit-text-stroke: 0px #6b0001}
+    span.s7 {font-kerning: none; color: #18702b; background-color: #ecf1f7; -webkit-text-stroke: 0px #18702b}
+    span.s8 {font-kerning: none; color: #6f0ec3; background-color: #ecf1f7; -webkit-text-stroke: 0px #6f0ec3}
+    span.s9 {font-kerning: none; color: #093c94; background-color: #ecf1f7; -webkit-text-stroke: 0px #093c94}
+    span.s10 {font-kerning: none}
+  </style>
+</head>
+<body>
+<p class="p1"><span class="s1">&lt;!DOCTYPE</span><span class="s2"> html</span><span class="s1">&gt;</span></p>
+<p class="p2"><span class="s3">&lt;</span><span class="s1">html</span><span class="s4"> </span><span class="s2">lang</span><span class="s3">=</span><span class="s5">"en"</span><span class="s3">&gt;</span></p>
+<p class="p2"><span class="s3">&lt;</span><span class="s1">head</span><span class="s3">&gt;</span></p>
+<p class="p3"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s1">charset</span><span class="s3">=</span><span class="s5">"UTF-8"</span><span class="s3">&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">meta</span><span class="s4"> </span><span class="s2">name</span><span class="s3">=</span><span class="s1">"viewport"</span><span class="s4"> </span><span class="s2">content</span><span class="s3">=</span><span class="s1">"width=device-width, initial-scale=1.0"</span><span class="s3">&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">title</span><span class="s3">&gt;</span><span class="s1">Modern Card Generator</span><span class="s3">&lt;/</span><span class="s6">title</span><span class="s3">&gt;</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- Tailwind CSS CDN --&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://cdn.tailwindcss.com"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">script</span><span class="s3">&gt;</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">// Optional: Configure Tailwind if needed</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>tailwind.config = {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>theme: {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>extend: {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>fontFamily: {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>inter: [</span><span class="s7">'Inter'</span><span class="s1">, </span><span class="s7">'sans-serif'</span><span class="s1">],</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>},</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">script</span><span class="s3">&gt;</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s1">style</span><span class="s3">&gt;</span></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s1">/* Define Inter font if not loaded by default or for local fallback */</span></p>
+<p class="p7"><span class="s4"><span class="Apple-converted-space">        </span></span><span class="s8">@import</span><span class="s4"> </span><span class="s9">url</span><span class="s4">(</span><span class="s1">'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap'</span><span class="s4">);</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">style</span><span class="s3">&gt;</span></p>
+<p class="p2"><span class="s3">&lt;/</span><span class="s1">head</span><span class="s3">&gt;</span></p>
+<p class="p2"><span class="s3">&lt;</span><span class="s1">body</span><span class="s3">&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">div</span><span class="s4"> </span><span class="s2">id</span><span class="s3">=</span><span class="s1">"root"</span><span class="s3">&gt;&lt;/</span><span class="s6">div</span><span class="s3">&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p6"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s1">&lt;!-- React and ReactDOM CDNs --&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/react@18/umd/react.development.js"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/react-dom@18/umd/react-dom.development.js"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">src</span><span class="s3">=</span><span class="s1">"https://unpkg.com/@babel/standalone/babel.min.js"</span><span class="s3">&gt;&lt;/</span><span class="s6">script</span><span class="s3">&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p4"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;</span><span class="s6">script</span><span class="s4"> </span><span class="s2">type</span><span class="s3">=</span><span class="s1">"text/babel"</span><span class="s3">&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const { useState, useEffect } = React;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// Helper function to get contact/social media icon (now includes real logos)</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const getContactOrSocialIcon = (type) =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const iconSizeClass = "w-7 h-7 object-contain"; // Slightly larger icons</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const onErrorFallback = "this.onerror=null;this.src='https://placehold.co/28x28/CCCCCC/000000?text=?';this.alt='Fallback Logo';";</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const coloredLogoMap = {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'facebook': "https://upload.wikimedia.org/wikipedia/commons/b/b5/Facebook_Logo_%282023%29.png",</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'instagram': "https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg",</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'twitter': "https://upload.wikimedia.org/wikipedia/commons/5/53/X_logo_2023_original.svg",</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'linkedin': "https://upload.wikimedia.org/wikipedia/commons/0/01/LinkedIn_Logo.svg",</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'youtube': "https://upload.wikimedia.org/wikipedia/commons/0/09/YouTube_full-color_icon_%282017%29.svg",</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'tiktok': "https://upload.wikimedia.org/wikipedia/en/a/a9/TikTok_logo.svg",</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'pinterest': "https://upload.wikimedia.org/wikipedia/commons/c/ce/Pinterest_Logo.png",</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'snapchat': "https://upload.wikimedia.org/wikipedia/commons/a/ad/Snapchat_logo.svg",</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'whatsapp': "https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg",</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'github': "https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg",</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'website': "https://upload.wikimedia.org/wikipedia/commons/9/9b/Google_Chrome_icon_%282011%29.svg", // More generic website icon</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'email': "https://upload.wikimedia.org/wikipedia/commons/7/7e/Gmail_icon_%282020%29.svg", // Standard Gmail icon</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'phone': "https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/Linephone_logo.svg/1200px-Linephone_logo.svg.png", // Generic phone icon</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'address': "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Google_Maps_icon_%282020%29.svg/1200px-Google_Maps_icon_%282020%29.svg.png", // Google Maps icon for address</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'pgp_key': "https://www.svgrepo.com/show/532354/key-fill.svg",</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'business_name': "https://www.svgrepo.com/show/496739/building.svg",</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>'pronouns': "https://www.svgrepo.com/show/487373/gender-fluid-alt.svg"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const logoUrl = coloredLogoMap[type.toLowerCase()];</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>if (logoUrl &amp;&amp; typeof logoUrl === 'string' &amp;&amp; (logoUrl.startsWith('http') || logoUrl.startsWith('data:image'))) {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>return &lt;img src={logoUrl} alt={type} className={iconSizeClass} onError={onErrorFallback} /&gt;;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>} else {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>return logoUrl || ''; // Return empty string if no URL icon</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// Main App Component</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>function App() {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const [cardData, setCardData] = useState(() =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>// Initialize state from localStorage or default values</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>const savedData = localStorage.getItem('cardGeneratorData');</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>return savedData ? JSON.parse(savedData) : {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>coverImage: 'https://placehold.co/600x200/6B7280/FFFFFF?text=Cover+Image',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>profileImage: 'https://placehold.co/128x128/9CA3AF/FFFFFF?text=Profile',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>name: 'Your Name',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>title: 'Your Title / Profession',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>about: 'A brief description about yourself or your work. Keep it concise and engaging!',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>contactDetails: [ // Unified list for all contact info and social links</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: 'cd-1', type: 'email', value: 'your.email@example.com' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: 'cd-2', type: 'phone', value: '+1 (555) 123-4567' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: 'cd-3', type: 'twitter', value: 'https://twitter.com/yourhandle' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: 'cd-4', type: 'address', value: '1600 Amphitheatre Parkway, Mountain View, CA' }, // Example Address</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>],</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>links: [</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: 'link-1', title: 'My Website', url: 'https://www.example.com', type: 'url', reviewText: '', customLogoUrl: '', textAboveButton: '', textBelowButton: '' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: 'link-2', title: 'LinkedIn Profile', url: 'https://www.linkedin.com/in/yourprofile', type: 'url', reviewText: '', customLogoUrl: '', textAboveButton: '', textBelowButton: '' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: 'link-3', title: 'Google Review', url: 'https://g.page/your-business/review', type: 'google-review', reviewText: '', customLogoUrl: '', textAboveButton: 'Tell us about your experience!', textBelowButton: 'Your feedback helps us improve.' } // Default Google Review</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>],</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>mediaItems: [</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: 'media-1', type: 'video', url: 'https://www.youtube.com/embed/M7lc1UVf-VE' }, // Changed default YouTube URL to a reliable embed</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{ id: 'media-2', type: 'pdf', url: 'https://www.africau.edu/images/default/sample.pdf' } // Example of a publicly embeddable PDF</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>],</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>background: 'bg-gradient-to-br from-purple-500 to-pink-500',</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>};</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>});</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>// Save cardData to localStorage whenever it changes</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>useEffect(() =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>localStorage.setItem('cardGeneratorData', JSON.stringify(cardData));</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>}, [cardData]);</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const updateCardData = (section, key, value) =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>setCardData(prevData =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>if (section === 'general') {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                         </span>return { ...prevData, [key]: value };</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>return prevData;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>});</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const updateArrayItem = (section, id, key, value) =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>setCardData(prevData =&gt; ({</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>...prevData,</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>[section]: prevData[section].map(item =&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>item.id === id ? { ...item, [key]: value } : item</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>)</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>}));</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const addArrayItem = (section, newItem) =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>setCardData(prevData =&gt; ({</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>...prevData,</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>[section]: [...prevData[section], { id: `item-${Date.now()}`, ...newItem }]</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>}));</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const removeArrayItem = (section, id) =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>setCardData(prevData =&gt; ({</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>...prevData,</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>[section]: prevData[section].filter(item =&gt; item.id !== id)</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>}));</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>};</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const backgrounds = [</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ name: 'Purple to Pink', class: 'bg-gradient-to-br from-purple-500 to-pink-500' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ name: 'Blue to Green', class: 'bg-gradient-to-br from-blue-500 to-green-500' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ name: 'Sunny Yellow', class: 'bg-gradient-to-br from-yellow-300 to-orange-400' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ name: 'Dark Grey', class: 'bg-gray-800' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ name: 'Clean White', class: 'bg-white' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ name: 'Ocean Teal', class: 'bg-gradient-to-br from-teal-400 to-cyan-600' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>];</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>const contactDetailsOptions = [</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'email', label: 'Email' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'phone', label: 'Phone' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'address', label: 'Location / Address' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'pgp_key', label: 'OpenPGP Public Key' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'business_name', label: 'Business Name' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'pronouns', label: 'Gender Pronouns' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'facebook', label: 'Facebook' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'instagram', label: 'Instagram' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'twitter', label: 'Twitter (X)' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'linkedin', label: 'LinkedIn' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'youtube', label: 'YouTube' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'tiktok', label: 'TikTok' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'github', label: 'GitHub' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'pinterest', label: 'Pinterest' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'snapchat', label: 'Snapchat' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'whatsapp', label: 'WhatsApp' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: 'website', label: 'Website' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{ value: '', label: 'Other (Manual Input)' },</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>];</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className="min-h-screen bg-gray-100 p-4 flex flex-col lg:flex-row items-start justify-center font-inter space-y-8 lg:space-y-0 lg:space-x-8"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{/* Editor Panel */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="bg-white p-6 rounded-xl shadow-lg w-full lg:w-1/2 max-w-2xl"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h1 className="text-3xl font-bold text-gray-800 mb-6 text-center"&gt;Card Customizer&lt;/h1&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{/* Background Selector */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;Section title="Choose Background"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;div className="grid grid-cols-2 sm:grid-cols-3 gap-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>{backgrounds.map((bg) =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>key={bg.name}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>className={`h-16 rounded-lg shadow-md border-2 ${cardData.background === bg.class ? 'border-blue-500' : 'border-transparent'} ${bg.class}`}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>onClick={() =&gt; updateCardData('general', 'background', bg.class)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>aria-label={`Select ${bg.name} background`}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;span className="sr-only"&gt;{bg.name}&lt;/span&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>))}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/Section&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{/* Profile Section */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;Section title="Profile Information"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;InputField</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>label="Cover Image URL"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>value={cardData.coverImage}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>onChange={(e) =&gt; updateCardData('general', 'coverImage', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>placeholder="e.g., https://example.com/cover.jpg"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;InputField</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>label="Profile Image URL"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>value={cardData.profileImage}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>onChange={(e) =&gt; updateCardData('general', 'profileImage', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>placeholder="e.g., https://example.com/profile.jpg"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;InputField</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>label="Name"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>value={cardData.name}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>onChange={(e) =&gt; updateCardData('general', 'name', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>placeholder="Your Name"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;InputField</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>label="Title / Profession"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>value={cardData.title}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>onChange={(e) =&gt; updateCardData('general', 'title', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>placeholder="e.g., Software Developer"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;TextAreaField</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>label="About You"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>value={cardData.about}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>onChange={(e) =&gt; updateCardData('general', 'about', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>placeholder="A short bio or description."</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/Section&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{/* Contact Information Section (unified) */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;Section title="Contact Information"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>{cardData.contactDetails.map((detail) =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div key={detail.id} className="flex items-end space-x-2 mb-3 bg-gray-50 p-3 rounded-md border border-gray-200"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="flex-grow"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;div className="mb-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;label className="block text-gray-700 text-sm font-bold mb-2"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>Type:</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/label&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;select</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>value={detail.type}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>onChange={(e) =&gt; updateArrayItem('contactDetails', detail.id, 'type', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>className="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>{contactDetailsOptions.map(option =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>&lt;option key={option.value} value={option.value}&gt;{option.label}&lt;/option&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>))}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/select&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;InputField</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>label="Value"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>value={detail.value}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>onChange={(e) =&gt; updateArrayItem('contactDetails', detail.id, 'value', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>placeholder={</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>detail.type === 'email' ? 'your.email@example.com' :</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>detail.type === 'phone' ? '+1 (123) 456-7890' :</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>detail.type === 'address' ? '123 Main St, City, Country' :</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>detail.type === 'pgp_key' ? 'Your PGP Key' :</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>detail.type === 'business_name' ? 'Your Business Name' :</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>detail.type === 'pronouns' ? 'They/Them' :</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>'Enter URL or text'</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>type={detail.type === 'email' ? 'email' : detail.type === 'phone' ? 'tel' : 'text'}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>onClick={() =&gt; removeArrayItem('contactDetails', detail.id)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors shadow-sm"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>aria-label="Remove contact detail"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>Remove</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>))}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>onClick={() =&gt; addArrayItem('contactDetails', { type: 'email', value: '' })}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>className="w-full mt-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-md"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>Add New Contact Detail</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/Section&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{/* Links Section */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;Section title="Links"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>{cardData.links.map((link) =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div key={link.id} className="flex items-end space-x-2 mb-3 bg-gray-50 p-3 rounded-md border border-gray-200"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="flex-grow"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;div className="mb-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;label className="block text-gray-700 text-sm font-bold mb-2"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>Link Type:</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/label&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;select</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>value={link.type}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>onChange={(e) =&gt; updateArrayItem('links', link.id, 'type', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>className="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;option value="url"&gt;Regular Link&lt;/option&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;option value="google-review"&gt;Google Review&lt;/option&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/select&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>{link.type === 'url' ? (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;InputField</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>label="Link Title"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>value={link.title}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>onChange={(e) =&gt; updateArrayItem('links', link.id, 'title', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>placeholder="e.g., My Portfolio"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;InputField</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>label="Link URL"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>value={link.url}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>onChange={(e) =&gt; updateArrayItem('links', link.id, 'url', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>placeholder="e.g., https://www.yourportfolio.com"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;InputField // New custom logo URL input</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>label="Custom Logo URL (Optional)"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>value={link.customLogoUrl}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>onChange={(e) =&gt; updateArrayItem('links', link.id, 'customLogoUrl', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>placeholder="e.g., https://example.com/logo.png"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>) : (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;TextAreaField</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>label="Text Above Google Review Logo"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>value={link.textAboveButton}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>onChange={(e) =&gt; updateArrayItem('links', link.id, 'textAboveButton', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>placeholder="e.g., Please leave us a review!"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;InputField</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>label="Google Review URL (Optional)"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>value={link.url}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>onChange={(e) =&gt; updateArrayItem('links', link.id, 'url', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>placeholder="e.g., your Google Maps review link"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;TextAreaField</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>label="Text Below Google Review Logo"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>value={link.textBelowButton}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>onChange={(e) =&gt; updateArrayItem('links', link.id, 'textBelowButton', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>placeholder="e.g., Your feedback is much appreciated."</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>onClick={() =&gt; removeArrayItem('links', link.id)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>className="px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors shadow-sm"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>aria-label="Remove link"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>Remove</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>))}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>onClick={() =&gt; addArrayItem('links', { title: '', url: '', type: 'url', reviewText: '', customLogoUrl: '', textAboveButton: '', textBelowButton: '' })}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>className="w-full mt-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-md"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>Add New Link</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/Section&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{/* Embedded Media Section */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;Section title="Embedded Media"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>{cardData.mediaItems.map((media) =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div key={media.id} className="flex flex-col sm:flex-row items-end sm:space-x-2 mb-3 bg-gray-50 p-3 rounded-md border border-gray-200"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div className="flex-grow w-full sm:w-auto"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;div className="mb-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;label className="block text-gray-700 text-sm font-bold mb-2"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>Media Type:</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/label&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;select</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>value={media.type}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>onChange={(e) =&gt; updateArrayItem('mediaItems', media.id, 'type', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>className="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;option value="video"&gt;Video&lt;/option&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;option value="pdf"&gt;PDF&lt;/option&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;option value="360_photo"&gt;360° Photo (Embed URL)&lt;/option&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/select&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;InputField</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>label="Media URL"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>value={media.url}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>onChange={(e) =&gt; updateArrayItem('mediaItems', media.id, 'url', e.target.value)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>placeholder={</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>media.type === 'video' ? 'e.g., https://www.youtube.com/embed/VIDEO_ID' :</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>media.type === 'pdf' ? 'e.g., https://example.com/document.pdf (direct link, MUST allow embedding)' :</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>'e.g., https://view.example.com/360-photo-embed'</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>onClick={() =&gt; removeArrayItem('mediaItems', media.id)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>className="mt-3 sm:mt-0 px-4 py-2 bg-red-500 text-white rounded-md hover:bg-red-600 transition-colors shadow-sm w-full sm:w-auto"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>aria-label="Remove media item"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>Remove</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>))}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>onClick={() =&gt; addArrayItem('mediaItems', { type: 'video', url: '' })}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>className="w-full mt-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 transition-colors shadow-md"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>Add New Media</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/button&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/Section&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{/* Card Preview */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="w-full lg:w-1/2 max-w-md flex flex-col items-center"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h2 className="text-2xl font-bold text-gray-800 mb-4 text-center"&gt;Your Digital Card&lt;/h2&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;CardPreview cardData={cardData} /&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>}</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// Reusable Section Component</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const Section = ({ title, children }) =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="mb-8 p-4 border border-gray-200 rounded-lg bg-gray-50"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;h2 className="text-xl font-semibold text-gray-700 mb-4 border-b pb-2"&gt;{title}&lt;/h2&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>{children}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// Reusable Input Field Component</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const InputField = ({ label, value, onChange, placeholder, type = 'text' }) =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="mb-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;label className="block text-gray-700 text-sm font-bold mb-2"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{label}:</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/label&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;input</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>type={type}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>value={value}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>onChange={onChange}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>placeholder={placeholder}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>className="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// Reusable Text Area Field Component</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const TextAreaField = ({ label, value, onChange, placeholder }) =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;div className="mb-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;label className="block text-gray-700 text-sm font-bold mb-2"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{label}:</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/label&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;textarea</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>value={value}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>onChange={onChange}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>placeholder={placeholder}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>rows="4"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>className="shadow appearance-none border rounded-md w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-y"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>);</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// Card Preview Component</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>const CardPreview = ({ cardData }) =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;div className={`w-full h-auto min-h-[400px] rounded-2xl shadow-xl overflow-hidden flex flex-col ${cardData.background} text-white`}&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{/* Cover Image Section */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{cardData.coverImage &amp;&amp; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>className="w-full h-40 bg-center bg-cover"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>style={{ backgroundImage: `url(${cardData.coverImage})` }}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>onError={(e) =&gt; { e.target.onerror = null; e.target.style.backgroundImage = `url('https://placehold.co/600x200/6B7280/FFFFFF?text=Cover+Image')`; }}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&gt;&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>)}</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{/* Profile Section */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="flex flex-col items-center p-6 -mt-16 z-10"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;img</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>src={cardData.profileImage}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>alt="Profile"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-md mb-4"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>onError={(e) =&gt; { e.target.onerror = null; e.target.src = 'https://placehold.co/128x128/9CA3AF/FFFFFF?text=Profile'; }}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>/&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h1 className="text-3xl font-bold text-center mb-1 drop-shadow-md"&gt;{cardData.name}&lt;/h1&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;h2 className="text-xl text-center mb-4 opacity-90 drop-shadow-sm"&gt;{cardData.title}&lt;/h2&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{cardData.about &amp;&amp; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;p className="text-center text-sm max-w-xs opacity-90 leading-relaxed drop-shadow-sm"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>{cardData.about}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{/* Contact Details Section (unified with social links) */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="text-center text-sm space-y-2 opacity-90 drop-shadow-sm p-6 pt-0"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="flex flex-wrap justify-center gap-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>{cardData.contactDetails.map((detail) =&gt; {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>const icon = getContactOrSocialIcon(detail.type);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>const isClickable = ['email', 'phone', 'facebook', 'instagram', 'twitter', 'linkedin', 'youtube', 'tiktok', 'github', 'pinterest', 'snapchat', 'whatsapp', 'website', 'address'].includes(detail.type);</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>if (detail.value) {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>let href = '#';</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>if (detail.type === 'email') href = `mailto:${detail.value}`;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>else if (detail.type === 'phone') href = `tel:${detail.value}`;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>else if (detail.type === 'address') href = `https://www.google.com/maps/search/?api=1&amp;query=${encodeURIComponent(detail.value)}`;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>else if (isClickable) href = detail.value.startsWith('http') ? detail.value : `https://${detail.value}`;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>if (isClickable) {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;a</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>key={detail.id}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>href={href}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>target="_blank"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>rel="noopener noreferrer"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>className="text-white hover:opacity-75 transition-opacity inline-block p-2 rounded-full bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm shadow-md flex items-center justify-center"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>aria-label={`${detail.type} link`}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;span className="text-2xl leading-none"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                    </span>{icon}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;/span&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/a&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>} else {</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>// For non-clickable types, show icon and value</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>return (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;p key={detail.id} className="flex items-center justify-center"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;span className="text-xl mr-2"&gt;{icon}&lt;/span&gt; {detail.value}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>return null;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>})}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{/* Links Section */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;div className="mb-6 space-y-3 p-6 pt-0"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>{cardData.links.map((link) =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>link.url || link.textAboveButton || link.textBelowButton ? ( // Check for text fields too</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;div key={link.id} className="flex flex-col items-center w-full"&gt; {/* Added w-full */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>{link.type === 'google-review' &amp;&amp; link.textAboveButton &amp;&amp; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;p className="text-white text-sm text-center mb-2 px-4 py-1 rounded-md bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm w-full max-w-xs"&gt;{link.textAboveButton}&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>{link.type === 'google-review' ? (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;a</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>href={link.url ? link.url : '#'} // Google Review logo is the button</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>target="_blank"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>rel="noopener noreferrer"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>className="block px-4 py-2 bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg text-center font-semibold hover:bg-opacity-30 transition-all duration-200 shadow-md text-white flex items-center justify-center"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>aria-label="Google Review"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;img src="uploaded:image_bc4dac.png-54d8e36a-f61f-4d7b-b1de-40259476621e" alt="Google Reviews" className="h-10 object-contain" onError={(e) =&gt; {e.target.onerror = null; e.target.src='https://placehold.co/150x40/FFFFFF/000000?text=Google+Reviews';}} /&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;/a&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>) : (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;a</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>href={link.url ? link.url : '#'}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>target="_blank"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>rel="noopener noreferrer"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>className="block w-full px-6 py-3 bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg text-center text-lg font-semibold hover:bg-opacity-30 transition-all duration-200 shadow-md text-white flex items-center justify-center space-x-2"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>{link.type === 'url' &amp;&amp; link.customLogoUrl ? (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>&lt;img src={link.customLogoUrl} alt="Custom Logo" className="w-6 h-6 mr-2 object-contain" onError={(e) =&gt; {e.target.onerror = null; e.target.style.display = 'none';}} /&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>) : null}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;span&gt;{link.title}&lt;/span&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;/a&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>{link.type === 'google-review' &amp;&amp; link.textBelowButton &amp;&amp; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>&lt;p className="text-white text-sm text-center mt-2 px-4 py-1 rounded-md bg-white bg-opacity-10 backdrop-filter backdrop-blur-sm w-full max-w-xs"&gt;{link.textBelowButton}&lt;/p&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>) : null</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>))}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{/* Embedded Media Section */}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>{cardData.mediaItems.length &gt; 0 &amp;&amp; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;div className="p-6 pt-0 space-y-4"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>{cardData.mediaItems.map((media) =&gt; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>media.url ? (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div key={media.id} className="w-full bg-white bg-opacity-20 backdrop-filter backdrop-blur-sm rounded-lg overflow-hidden shadow-md"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>{media.type === 'video' &amp;&amp; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;iframe</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>width="100%"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>height="200"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>src={media.url}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>frameBorder="0"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>allowFullScreen</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>title="Embedded Video"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>className="rounded-lg"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&gt;&lt;/iframe&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>{media.type === 'pdf' &amp;&amp; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;iframe</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>width="100%"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>height="300"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>src={media.url}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>frameBorder="0"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>title="Embedded PDF"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>className="rounded-lg"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&gt;&lt;/iframe&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>{media.type === '360_photo' &amp;&amp; (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&lt;iframe</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>width="100%"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>height="250"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>src={media.url}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>frameBorder="0"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>allowFullScreen</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>title="Embedded 360 Photo"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                                </span>className="rounded-lg"</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                            </span>&gt;&lt;/iframe&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>) : (</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;div key={media.id} className="text-center text-sm text-white opacity-70"&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                        </span>Please provide a valid URL for the {media.type.replace('_', ' ')}.</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                    </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                                </span>)</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                            </span>))}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                    </span>)}</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">            </span>);</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>};</span></p>
+<p class="p8"><span class="s10"></span><br></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>// Render the App component</span></p>
+<p class="p5"><span class="s1"><span class="Apple-converted-space">        </span>ReactDOM.createRoot(document.getElementById('root')).render(&lt;App /&gt;);</span></p>
+<p class="p2"><span class="s4"><span class="Apple-converted-space">    </span></span><span class="s3">&lt;/</span><span class="s1">script</span><span class="s3">&gt;</span></p>
+<p class="p2"><span class="s3">&lt;/</span><span class="s1">body</span><span class="s3">&gt;</span></p>
+<p class="p2"><span class="s3">&lt;/</span><span class="s1">html</span><span class="s3">&gt;</span></p>
+</body>
+</html>
